@@ -30,7 +30,22 @@ public class ControladoraPersistencia {
         try {
             productoJpa.destroy(idselecionado);
         } catch (NonexistentEntityException e) {
-            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE,null,e);
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, e);
         }
+    }
+
+    public Producto traerPorId(Long id) {
+        Producto producto = productoJpa.findProducto(id);
+        return producto;
+    }
+
+    public Producto traerPorNombre(String nombre) {
+        Producto producto = productoJpa.findProductoByNombre(nombre);
+        return producto;
+    }
+
+    public Producto traerPorCodigo(String codigo) {
+        Producto producto = productoJpa.findProductoByCodigo(codigo);
+        return producto;
     }
 }

@@ -15,6 +15,7 @@ public class FrmProductos extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        manejoDecampos(true);
         cargarTabla();
     }
 
@@ -246,10 +247,13 @@ public class FrmProductos extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Producto Creado");
             cargarTabla();
             limpiarCampos();
+            manejoDecampos(true);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al guardar ");
             System.out.println(e.getMessage());
             limpiarCampos();
+            manejoDecampos(true);
+
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
@@ -257,6 +261,7 @@ public class FrmProductos extends javax.swing.JFrame {
         // TODO add your handling code here:
         String codigoNuevo = "PR-" + GenerateNumber.getRandomNumber(100, 1000);
         txtCodigo.setText(codigoNuevo);
+        manejoDecampos(false);
     }//GEN-LAST:event_btnBuscarPActionPerformed
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
@@ -329,5 +334,22 @@ public class FrmProductos extends javax.swing.JFrame {
         txtNombreProducto.setText("");
         txtPrecio.setText("");
         txtStock.setText("");
+    }
+
+    private void manejoDecampos(boolean bloquear) {
+        if (bloquear) {
+            txtStock.setEditable(false);
+            txtCategoria.setEditable(false);
+            txtDescription.setEditable(false);
+            txtNombreProducto.setEditable(false);
+            txtPrecio.setEditable(false);
+        } else {
+            txtStock.setEditable(true);
+            txtCategoria.setEditable(true);
+            txtDescription.setEditable(true);
+            txtNombreProducto.setEditable(true);
+            txtPrecio.setEditable(true);
+        }
+
     }
 }

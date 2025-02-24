@@ -3,6 +3,7 @@ com/brunoferre/gestioninventario/vista/FrmHistorial$2.class
 com/brunoferre/gestioninventario/persistence/exceptions/PreexistingEntityException.class
 com/brunoferre/gestioninventario/logica/Producto.class
 com/brunoferre/gestioninventario/persistence/ProductoJpaController.class
+com/brunoferre/gestioninventario/vista/FrmVentas$5.class
 com/brunoferre/gestioninventario/persistence/exceptions/IllegalOrphanException.class
 com/brunoferre/gestioninventario/vista/FrmProductos$3.class
 com/brunoferre/gestioninventario/vista/MiCuenta.class
@@ -31,6 +32,7 @@ com/brunoferre/gestioninventario/vista/FrmOpciones$1.class
 com/brunoferre/gestioninventario/vista/MiCuenta$1.class
 com/brunoferre/gestioninventario/vista/FrmProductos$4.class
 com/brunoferre/gestioninventario/vista/FrmHistorial$1.class
+com/brunoferre/gestioninventario/vista/FrmVentas$4.class
 com/brunoferre/gestioninventario/vista/FrmProductosFaltantes.class
 com/brunoferre/gestioninventario/GestionInventario.class
 com/brunoferre/gestioninventario/persistence/exceptions/NonexistentEntityException.class
@@ -40,4 +42,5 @@ com/brunoferre/gestioninventario/vista/FrmOpciones$2.class
 com/brunoferre/gestioninventario/vista/FrmOpciones$7.class
 com/brunoferre/gestioninventario/logica/GenerateNumber.class
 com/brunoferre/gestioninventario/vista/FrmProductos$1.class
+com/brunoferre/gestioninventario/vista/FrmVentas$6.class
 com/brunoferre/gestioninventario/logica/DetalleVenta.class

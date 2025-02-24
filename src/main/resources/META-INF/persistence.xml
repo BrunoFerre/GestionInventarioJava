@@ -13,6 +13,7 @@
       <property name="jakarta.persistence.jdbc.password" value="develop123"/>
       <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
       <property name="jakarta.persistence.schema-generation.database.action" value="update"/>
+      <property name="hibernate.transaction.jta.platform" value="org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform"/>
     </properties>
   </persistence-unit>
 </persistence>

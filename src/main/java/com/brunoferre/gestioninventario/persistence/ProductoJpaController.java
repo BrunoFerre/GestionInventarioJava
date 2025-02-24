@@ -1,4 +1,3 @@
-
 package com.brunoferre.gestioninventario.persistence;
 
 import java.io.Serializable;
@@ -11,7 +10,9 @@ import com.brunoferre.gestioninventario.logica.Producto;
 import com.brunoferre.gestioninventario.persistence.exceptions.NonexistentEntityException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.TypedQuery;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -23,9 +24,9 @@ public class ProductoJpaController implements Serializable {
     }
 
     public ProductoJpaController() {
-        emf= Persistence.createEntityManagerFactory("GestionPU");
+        emf = Persistence.createEntityManagerFactory("GestionPU");
     }
-    
+
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
@@ -185,5 +186,39 @@ public class ProductoJpaController implements Serializable {
             em.close();
         }
     }
-    
+
+    public Producto findProductoByNombre(String nombre) {
+        EntityManager em = getEntityManager();
+        try {
+            TypedQuery<Producto> query = em.createQuery(
+                    "SELECT p FROM productos p WHERE p.nombre = :nombre", Producto.class);
+            query.setParameter("nombre", nombre);
+            return query.getSingleResult();
+        } catch (NoResultException e) {
+            System.out.println("No se encontró producto con nombre: " + nombre);
+            return null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e; // Relanzar la excepción para ver más detalles
+        } finally {
+            em.close();
+        }
+    }
+       public Producto findProductoByCodigo(String codigo) {
+        EntityManager em = getEntityManager();
+        try {
+            TypedQuery<Producto> query = em.createQuery("SELECT p FROM productos p WHERE p.codigoProducto = :codigo", Producto.class);
+            query.setParameter("codigo", codigo);
+            return query.getSingleResult();
+        } catch (NoResultException e) {
+            System.out.println("No se encontró producto con nombre: " + codigo);
+            return null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e; // Relanzar la excepción para ver más detalles
+        } finally {
+            em.close();
+        }
+    }
+
 }
