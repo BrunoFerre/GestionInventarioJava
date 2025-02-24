@@ -1,6 +1,7 @@
 package com.brunoferre.gestioninventario.logica;
 
 import com.brunoferre.gestioninventario.persistence.ControladoraPersistencia;
+import com.brunoferre.gestioninventario.persistence.exceptions.NonexistentEntityException;
 import java.util.List;
 
 public class Controladora {
@@ -22,5 +23,32 @@ public class Controladora {
 
     public void eliminarProducto(Long idselecionado) {
         controlPersis.borrarProducto(idselecionado);
+    }
+
+    public Object buscarProductoId(Long id) {
+        try {
+            Producto producto = controlPersis.traerPorId(id);
+            return producto;
+        } catch (Exception e) {
+            return e.getMessage();
+        }
+    }
+
+    public Object buscarProductoNombre(String nombre) {
+        try {
+            Producto producto = controlPersis.traerPorNombre(nombre);
+            return producto;
+        } catch (Exception e) {
+            return e.getMessage();
+        }
+    }
+
+    public Object buscarProductoCodigo(String codigo) {
+        try {
+            Producto producto = controlPersis.traerPorCodigo(codigo);
+            return producto;
+        } catch (Exception e) {
+            return e.getMessage();
+        }
     }
 }
