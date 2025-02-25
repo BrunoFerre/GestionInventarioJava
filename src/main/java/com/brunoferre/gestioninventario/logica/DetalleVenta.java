@@ -27,7 +27,7 @@ public class DetalleVenta implements Serializable {
     public DetalleVenta() {
     }
 
-    public DetalleVenta(Double precio, int cantidad, Producto producto, Venta venta) {
+    public DetalleVenta(Double precio, int cantidad,Producto producto,Venta venta) {
         this.precio = precio;
         this.cantidad = cantidad;
         this.producto = producto;

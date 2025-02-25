@@ -1,7 +1,10 @@
 package com.brunoferre.gestioninventario.persistence;
 
+import com.brunoferre.gestioninventario.logica.DetalleVenta;
 import com.brunoferre.gestioninventario.logica.Producto;
+import com.brunoferre.gestioninventario.logica.Venta;
 import com.brunoferre.gestioninventario.persistence.exceptions.NonexistentEntityException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -51,5 +54,45 @@ public class ControladoraPersistencia {
 
     public List<Producto> productosFaltantes() {
         return productoJpa.findProductsForStock(20);
+    }
+
+    public void guardarDetalleVenta(DetalleVenta detalleVenta) {
+        try {
+            detalleJpa.create(detalleVenta);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void guardarVenta(Venta nuevaVenta) {
+        try {
+            ventaJpa.create(nuevaVenta);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void actualizar(Long idProducto,int stock) {
+        try {
+            productoJpa.actualizarStock(idProducto,stock);
+        } catch (Exception e) {
+            e.getMessage();
+        }
+    }
+
+    public Venta traerVentaId(Long venta) {
+        try {
+           return ventaJpa.findVenta(venta);
+        } catch (Exception e) {
+            return new Venta();
+        }
+    }
+
+    public List<Venta> traerVentas() {
+        try {
+          return ventaJpa.findVentaEntities();
+        } catch (Exception e) {
+            return List.of(new Venta(0L,LocalDate.now(),"ERROR ERROR",0.0));
+        }
     }
 }

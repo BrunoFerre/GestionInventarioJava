@@ -61,4 +61,24 @@ public class Controladora {
             return List.of(producto);
         }
     }
+
+    public void guardarDetalle(DetalleVenta detalleVenta) {
+        controlPersis.guardarDetalleVenta(detalleVenta);
+    }
+
+    public void guardarVenta(Venta nuevaVenta) {
+        controlPersis.guardarVenta(nuevaVenta);
+    }
+
+    public void actualizar(Long idProducto,int stock) {
+        controlPersis.actualizar(idProducto,stock);
+    }
+
+    public Venta taerVenta(Long venta) {
+        return controlPersis.traerVentaId(venta);
+    }
+
+    public List<Venta> traerVentas() {
+       return controlPersis.traerVentas();
+    }
 }

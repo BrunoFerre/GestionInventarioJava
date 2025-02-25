@@ -204,7 +204,8 @@ public class ProductoJpaController implements Serializable {
             em.close();
         }
     }
-       public Producto findProductoByCodigo(String codigo) {
+
+    public Producto findProductoByCodigo(String codigo) {
         EntityManager em = getEntityManager();
         try {
             TypedQuery<Producto> query = em.createQuery("SELECT p FROM productos p WHERE p.codigoProducto = :codigo", Producto.class);
@@ -220,10 +221,11 @@ public class ProductoJpaController implements Serializable {
             em.close();
         }
     }
-       public List<Producto> findProductsForStock(int stock) {
+
+    public List<Producto> findProductsForStock(int stock) {
         EntityManager em = getEntityManager();
         try {
-            TypedQuery<Producto> query = em.createQuery( "SELECT p FROM productos p WHERE p.stock < :stock", Producto.class);
+            TypedQuery<Producto> query = em.createQuery("SELECT p FROM productos p WHERE p.stock < :stock", Producto.class);
             query.setParameter("stock", stock);
             return query.getResultList();
         } catch (NoResultException e) {
@@ -236,4 +238,30 @@ public class ProductoJpaController implements Serializable {
             em.close();
         }
     }
+
+    public Object actualizarStock(Long idProducto, int stock) {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            Query query = em.createQuery("UPDATE productos p SET stock = (p.stock - :stock) WHERE p.id = :idProducto ");
+            query.setParameter("stock", stock);
+            query.setParameter("idProducto", idProducto);
+            int filasactualizadas = query.executeUpdate();
+            em.getTransaction().commit();
+            if (filasactualizadas > 0) {
+                System.out.println("Actualizdo");
+            } else {
+                System.out.println("No se actualizo");
+            }
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback(); // Revertir cambios en caso de error
+            }
+            e.printStackTrace();
+        } finally {
+            em.close();
+            return "Erro";// Cerrar EntityManager
+        }
+    }
+;
 }
