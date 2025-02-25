@@ -1,7 +1,13 @@
 package com.brunoferre.gestioninventario.vista;
 
 import com.brunoferre.gestioninventario.logica.Controladora;
+import com.brunoferre.gestioninventario.logica.DetalleVenta;
+import com.brunoferre.gestioninventario.logica.GenerateNumber;
 import com.brunoferre.gestioninventario.logica.Producto;
+import com.brunoferre.gestioninventario.logica.Venta;
+import jakarta.transaction.Transactional;
+import java.time.LocalDate;
+import java.util.Iterator;
 import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -75,7 +81,7 @@ public class FrmVentas extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(null), null));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Producto"));
 
         jLabel2.setText("PRODUCTO");
 
@@ -192,7 +198,7 @@ public class FrmVentas extends javax.swing.JFrame {
                 .addGap(67, 67, 67))
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, null));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Opciones"));
 
         jButton3.setBackground(new java.awt.Color(39, 210, 225));
         jButton3.setText("Nueva Venta");
@@ -212,6 +218,11 @@ public class FrmVentas extends javax.swing.JFrame {
 
         jButton6.setBackground(new java.awt.Color(39, 210, 225));
         jButton6.setText("Generar Venta");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setBackground(new java.awt.Color(39, 210, 225));
         jButton7.setText("Salir");
@@ -362,6 +373,11 @@ public class FrmVentas extends javax.swing.JFrame {
         removerProducto();
     }//GEN-LAST:event_btnQuitarActionPerformed
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        generarVenta();
+    }//GEN-LAST:event_jButton6ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarCodigo;
@@ -425,7 +441,7 @@ public class FrmVentas extends javax.swing.JFrame {
         Double subTotal = producto.getPrecio() * cantidad;
         DefaultTableModel tabla = (DefaultTableModel) tblDetalles.getModel();
         if (tabla.getColumnCount() == 0) {
-            String titulosTabla[] = {"#", "Producto", "Codigo", "Stock", "Subtotal"};
+            String titulosTabla[] = {"#", "Producto", "Codigo", "Cantidad", "Subtotal"};
             tabla.setColumnIdentifiers(titulosTabla);
         }
         boolean encontrado = false;
@@ -453,7 +469,7 @@ public class FrmVentas extends javax.swing.JFrame {
         totalAmount();
     }
 
-    public void totalAmount() {
+    public Double totalAmount() {
         DefaultTableModel model = (DefaultTableModel) tblDetalles.getModel();
         double total = 0.0;
         for (int i = 0; i < model.getRowCount(); i++) {
@@ -461,6 +477,7 @@ public class FrmVentas extends javax.swing.JFrame {
         }
 
         txtTotal.setText(total + "");
+        return total;
     }
 
     public void removerProducto() {
@@ -469,8 +486,43 @@ public class FrmVentas extends javax.swing.JFrame {
         if (fila >= 0) {
             model.removeRow(fila);
             totalAmount();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Seleccione un producto para quitar");
         }
+    }
+
+
+    private void generarVenta() {
+        try {
+            Venta nuevaVenta = new Venta();
+            nuevaVenta.setFecha(LocalDate.now());
+            nuevaVenta.setNumeroVenta(GenerateNumber.TicketNumber());
+            nuevaVenta.setTotal(totalAmount());
+            control.guardarVenta(nuevaVenta);
+            Long venta = nuevaVenta.getId();
+            System.out.println(venta);
+            DefaultTableModel model = (DefaultTableModel) tblDetalles.getModel();
+            for (int i = 0; i < model.getRowCount(); i++) {
+                int cantidad = Integer.parseInt(model.getValueAt(i,3).toString());
+                Double precio = Double.parseDouble(model.getValueAt(i,4).toString());
+                Producto pr = (Producto) control.buscarProductoId(Long.parseLong(model.getValueAt(i,0).toString()));
+                DetalleVenta detalleVenta = new DetalleVenta(precio,cantidad,pr,nuevaVenta);                
+                control.guardarDetalle(detalleVenta);
+                actualizarStock(Long.parseLong(model.getValueAt(i, 0).toString()), Integer.parseInt(model.getValueAt(i, 3).toString()));
+            }
+            control.guardarVenta(nuevaVenta);
+            JOptionPane.showMessageDialog(null, "Venta creada su ticket es: "+nuevaVenta.getNumeroVenta());
+            limpiarCampos();
+            limpiarTabla();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Error al generar la venta");
+        }
+
+    }
+
+    private void actualizarStock(Long idProducto, int stock) {
+        Producto pr = (Producto) control.buscarProductoId(idProducto);
+        pr.setStock(pr.getStock() - stock);
+        control.actualizar(idProducto, stock);
     }
 }

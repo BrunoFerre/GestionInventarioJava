@@ -16,7 +16,7 @@ public class FrmOpciones extends javax.swing.JFrame {
     public FrmOpciones() {
         initComponents();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int x = 0;// Posición en la derecha
+        int x = (int) (screenSize.getWidth() - 1);// Posición en la derecha
         int y = (screenSize.height - this.getHeight()) / 2;
         this.setLocation(x, y);
         this.setResizable(false);
