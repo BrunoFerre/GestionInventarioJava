@@ -51,4 +51,14 @@ public class Controladora {
             return e.getMessage();
         }
     }
+
+    public List<Producto> productosFaltantes() {
+        try {
+            List<Producto> lista = controlPersis.productosFaltantes();
+            return lista;
+        } catch (Exception e) {
+            Producto producto = new Producto("ERRROR", 0, 0.0);
+            return List.of(producto);
+        }
+    }
 }

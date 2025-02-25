@@ -220,5 +220,20 @@ public class ProductoJpaController implements Serializable {
             em.close();
         }
     }
-
+       public List<Producto> findProductsForStock(int stock) {
+        EntityManager em = getEntityManager();
+        try {
+            TypedQuery<Producto> query = em.createQuery( "SELECT p FROM productos p WHERE p.stock < :stock", Producto.class);
+            query.setParameter("stock", stock);
+            return query.getResultList();
+        } catch (NoResultException e) {
+            System.out.println("Error al traer");
+            return null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e; // Relanzar la excepción para ver más detalles
+        } finally {
+            em.close();
+        }
+    }
 }

@@ -48,4 +48,8 @@ public class ControladoraPersistencia {
         Producto producto = productoJpa.findProductoByCodigo(codigo);
         return producto;
     }
+
+    public List<Producto> productosFaltantes() {
+        return productoJpa.findProductsForStock(20);
+    }
 }
