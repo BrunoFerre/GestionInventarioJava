@@ -6,12 +6,20 @@ package com.brunoferre.gestioninventario.vista;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import javax.swing.SwingWorker;
 
 /**
  *
  * @author bruno
  */
 public class FrmOpciones extends javax.swing.JFrame {
+
+    FrmProductos frmProductos = null;
+    FrmVentas frmVentas = null;
+    FrmProductosFaltantes faltantes = null;
+    FrmHistorial historial = null;
+
+    Loader loader = new Loader();
 
     public FrmOpciones() {
         initComponents();
@@ -157,16 +165,52 @@ public class FrmOpciones extends javax.swing.JFrame {
 
     private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
         // TODO add your handling code here:
-        FrmVentas frmVentas = new FrmVentas();
-        frmVentas.setVisible(true);
-        btnVenta.disable();
+        loader.setVisible(true);
+        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+            @Override
+            protected Void doInBackground() throws Exception {
+                // Aquí iría el código para realizar la consulta a la base de datos
+                frmVentas = new FrmVentas();
+                // Simulamos la consulta con un retraso de 3 segundos (puedes reemplazar esto con tu consulta real)
+                return null;
+            }
+
+            @Override
+            protected void done() {
+                // Cerrar el loader y abrir la ventana de productos
+                loader.dispose();
+                frmVentas.setVisible(true);
+            }
+        };
+
+        // Iniciar el trabajador en segundo plano
+        worker.execute();
     }//GEN-LAST:event_btnVentaActionPerformed
 
     private void btnGestionPrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionPrActionPerformed
         // TODO add your handling code here:
-        FrmProductos frmProductos = new FrmProductos();
-        frmProductos.setVisible(true);
-        btnGestionPr.disable();
+
+        loader.setVisible(true);
+        // Crear un SwingWorker para realizar la consulta en segundo plano
+        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+            @Override
+            protected Void doInBackground() throws Exception {
+                // Aquí iría el código para realizar la consulta a la base de datos
+                frmProductos = new FrmProductos();
+                // Simulamos la consulta con un retraso de 3 segundos (puedes reemplazar esto con tu consulta real)
+                return null;
+            }
+
+            @Override
+            protected void done() {
+                // Cerrar el loader y abrir la ventana de productos
+                loader.dispose();
+                frmProductos.setVisible(true);
+            }
+        };
+
+        // Iniciar el trabajador en segundo plano
+        worker.execute();
     }//GEN-LAST:event_btnGestionPrActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -189,14 +233,50 @@ public class FrmOpciones extends javax.swing.JFrame {
 
     private void btnFaltantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFaltantesActionPerformed
         // TODO add your handling code here:
-        FrmProductosFaltantes faltantes = new FrmProductosFaltantes();
-        faltantes.setVisible(true);
+        loader.setVisible(true);
+        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+            @Override
+            protected Void doInBackground() throws Exception {
+                // Aquí iría el código para realizar la consulta a la base de datos
+                faltantes = new FrmProductosFaltantes();
+                // Simulamos la consulta con un retraso de 3 segundos (puedes reemplazar esto con tu consulta real)
+                return null;
+            }
+
+            @Override
+            protected void done() {
+                // Cerrar el loader y abrir la ventana de productos
+                loader.dispose();
+                faltantes.setVisible(true);
+            }
+        };
+
+        // Iniciar el trabajador en segundo plano
+        worker.execute();
     }//GEN-LAST:event_btnFaltantesActionPerformed
 
     private void btnHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistorialActionPerformed
         // TODO add your handling code here:
-        FrmHistorial historial = new FrmHistorial();
-        historial.setVisible(true);
+        loader.setVisible(true);
+        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+            @Override
+            protected Void doInBackground() throws Exception {
+                // Aquí iría el código para realizar la consulta a la base de datos
+                historial = new FrmHistorial();
+                // Simulamos la consulta con un retraso de 3 segundos (puedes reemplazar esto con tu consulta real)
+                return null;
+            }
+
+            @Override
+            protected void done() {
+                // Cerrar el loader y abrir la ventana de productos
+                loader.dispose();
+                historial.setVisible(true);
+            }
+        };
+
+        // Iniciar el trabajador en segundo plano
+        worker.execute();
     }//GEN-LAST:event_btnHistorialActionPerformed
 
 

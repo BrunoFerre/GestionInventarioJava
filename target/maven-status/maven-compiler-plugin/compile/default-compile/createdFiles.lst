@@ -7,7 +7,9 @@ com/brunoferre/gestioninventario/vista/FrmVentas.class
 com/brunoferre/gestioninventario/vista/FrmOpciones$5.class
 com/brunoferre/gestioninventario/vista/FrmProductos$5.class
 com/brunoferre/gestioninventario/vista/FrmVentas$2.class
+com/brunoferre/gestioninventario/vista/FrmOpciones$8.class
 com/brunoferre/gestioninventario/persistence/PersonaJpaController.class
+com/brunoferre/gestioninventario/vista/Loader.class
 com/brunoferre/gestioninventario/vista/Login.class
 com/brunoferre/gestioninventario/persistence/DetalleVentaJpaController.class
 com/brunoferre/gestioninventario/vista/FrmProductos.class
@@ -15,6 +17,7 @@ com/brunoferre/gestioninventario/vista/FrmProductos$2.class
 com/brunoferre/gestioninventario/vista/Login$1.class
 com/brunoferre/gestioninventario/vista/FrmOpciones.class
 com/brunoferre/gestioninventario/vista/FrmProductosFaltantes$2.class
+com/brunoferre/gestioninventario/vista/FrmOpciones$10.class
 com/brunoferre/gestioninventario/vista/FrmOpciones$4.class
 com/brunoferre/gestioninventario/vista/FrmHistorial.class
 com/brunoferre/gestioninventario/vista/FrmOpciones$1.class
@@ -28,6 +31,7 @@ com/brunoferre/gestioninventario/persistence/exceptions/PreexistingEntityExcepti
 com/brunoferre/gestioninventario/persistence/ProductoJpaController.class
 com/brunoferre/gestioninventario/persistence/exceptions/IllegalOrphanException.class
 com/brunoferre/gestioninventario/vista/FrmProductos$3.class
+com/brunoferre/gestioninventario/vista/FrmOpciones$11.class
 com/brunoferre/gestioninventario/logica/Persona.class
 com/brunoferre/gestioninventario/vista/FrmVentas$7.class
 com/brunoferre/gestioninventario/vista/Login$2.class
@@ -43,6 +47,7 @@ com/brunoferre/gestioninventario/vista/FrmHistorial$1.class
 com/brunoferre/gestioninventario/vista/FrmVentas$4.class
 com/brunoferre/gestioninventario/vista/FrmVentas$8.class
 com/brunoferre/gestioninventario/persistence/exceptions/NonexistentEntityException.class
+com/brunoferre/gestioninventario/vista/FrmOpciones$9.class
 com/brunoferre/gestioninventario/vista/FrmVentas$1.class
 com/brunoferre/gestioninventario/vista/FrmOpciones$2.class
 com/brunoferre/gestioninventario/logica/GenerateNumber.class
