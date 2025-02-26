@@ -1,4 +1,3 @@
-
 package com.brunoferre.gestioninventario.persistence;
 
 import com.brunoferre.gestioninventario.logica.Persona;
@@ -9,6 +8,7 @@ import java.io.Serializable;
 import jakarta.persistence.Query;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 import java.util.List;
@@ -19,7 +19,7 @@ public class PersonaJpaController implements Serializable {
         this.emf = emf;
     }
 
-    public PersonaJpaController( ) {
+    public PersonaJpaController() {
         emf = Persistence.createEntityManagerFactory("GestionPU");
     }
     private EntityManagerFactory emf = null;
@@ -131,5 +131,19 @@ public class PersonaJpaController implements Serializable {
             em.close();
         }
     }
-    
+
+    public Persona findByUsuarioandPassword(String email, String dni) {
+        EntityManager em = getEntityManager();
+        String sql = "SELECT p FROM Persona p WHERE p.email = :email AND dni = :dni";
+        TypedQuery<Persona> query = em.createQuery(sql, Persona.class);
+        query.setParameter("email", email);
+        query.setParameter("dni", dni);
+        try {
+            return query.getSingleResult();
+        } catch (Exception e) {
+            System.out.println(e.getCause());
+            return null;
+        }
+    }
+
 }

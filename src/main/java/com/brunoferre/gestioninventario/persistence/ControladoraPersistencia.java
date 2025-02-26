@@ -1,6 +1,7 @@
 package com.brunoferre.gestioninventario.persistence;
 
 import com.brunoferre.gestioninventario.logica.DetalleVenta;
+import com.brunoferre.gestioninventario.logica.Persona;
 import com.brunoferre.gestioninventario.logica.Producto;
 import com.brunoferre.gestioninventario.logica.Venta;
 import com.brunoferre.gestioninventario.persistence.exceptions.NonexistentEntityException;
@@ -8,6 +9,8 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 public class ControladoraPersistencia {
 
@@ -72,9 +75,9 @@ public class ControladoraPersistencia {
         }
     }
 
-    public void actualizar(Long idProducto,int stock) {
+    public void actualizar(Long idProducto, int stock) {
         try {
-            productoJpa.actualizarStock(idProducto,stock);
+            productoJpa.actualizarStock(idProducto, stock);
         } catch (Exception e) {
             e.getMessage();
         }
@@ -82,7 +85,7 @@ public class ControladoraPersistencia {
 
     public Venta traerVentaId(Long venta) {
         try {
-           return ventaJpa.findVenta(venta);
+            return ventaJpa.findVenta(venta);
         } catch (Exception e) {
             return new Venta();
         }
@@ -90,9 +93,19 @@ public class ControladoraPersistencia {
 
     public List<Venta> traerVentas() {
         try {
-          return ventaJpa.findVentaEntities();
+            return ventaJpa.findVentaEntities();
         } catch (Exception e) {
-            return List.of(new Venta(0L,LocalDate.now(),"ERROR ERROR",0.0));
+            return List.of(new Venta(0L, LocalDate.now(), "ERROR ERROR", 0.0));
+        }
+    }
+
+    public boolean findPersonaByUsuario(String nombre, String dni) {
+        try {
+            Persona persona = personaJpa.findByUsuarioandPassword(nombre, dni);
+            return true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
         }
     }
 }
