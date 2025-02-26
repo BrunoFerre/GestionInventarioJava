@@ -72,8 +72,8 @@ public class Controladora {
         controlPersis.guardarVenta(nuevaVenta);
     }
 
-    public void actualizar(Long idProducto,int stock) {
-        controlPersis.actualizar(idProducto,stock);
+    public void actualizar(Long idProducto, int stock) {
+        controlPersis.actualizar(idProducto, stock);
     }
 
     public Venta taerVenta(Long venta) {
@@ -81,10 +81,19 @@ public class Controladora {
     }
 
     public List<Venta> traerVentas() {
-       return controlPersis.traerVentas();
+        return controlPersis.traerVentas();
     }
 
     public boolean verificarUsuario(String nombre, String dni) {
-       return controlPersis.findPersonaByUsuario(nombre,dni);
+        return controlPersis.findPersonaByUsuario(nombre, dni);
+    }
+
+    public VentasDTO traerVentaporTicket(String ticket) {
+        return controlPersis.traerPorTicket(ticket);
+    }
+
+    public List<DetallesVentaDTO> traerDetalles(Venta venta) {
+        List<DetallesVentaDTO> detalle = controlPersis.getAllByVenta(venta).stream().map(dv -> new DetallesVentaDTO(dv)).toList();
+        return detalle;
     }
 }

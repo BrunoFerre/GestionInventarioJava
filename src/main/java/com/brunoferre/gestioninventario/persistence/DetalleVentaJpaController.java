@@ -1,4 +1,3 @@
-
 package com.brunoferre.gestioninventario.persistence;
 
 import com.brunoferre.gestioninventario.logica.DetalleVenta;
@@ -12,7 +11,9 @@ import com.brunoferre.gestioninventario.logica.Venta;
 import com.brunoferre.gestioninventario.persistence.exceptions.NonexistentEntityException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.TypedQuery;
 import java.util.List;
 
 public class DetalleVentaJpaController implements Serializable {
@@ -24,7 +25,7 @@ public class DetalleVentaJpaController implements Serializable {
     public DetalleVentaJpaController() {
         emf = Persistence.createEntityManagerFactory("GestionPU");
     }
-    
+
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
@@ -191,5 +192,22 @@ public class DetalleVentaJpaController implements Serializable {
             em.close();
         }
     }
-    
+
+    public List<DetalleVenta> findAllByVenta(Venta venta) {
+        EntityManager em = getEntityManager();
+        try {
+            TypedQuery<DetalleVenta> query = em.createQuery("SELECT dv FROM DetalleVenta dv WHERE dv.venta = :venta", DetalleVenta.class);
+            query.setParameter("venta", venta);
+            return query.getResultList();
+        } catch (NoResultException ex) {
+            System.out.println(ex.getMessage());
+            return null;
+        }catch(Exception e){
+            System.out.println("ERROR PORQUE CELE NO ME HACE CASO");
+            throw e;
+        }finally{
+            em.close();
+        }
+    }
+
 }

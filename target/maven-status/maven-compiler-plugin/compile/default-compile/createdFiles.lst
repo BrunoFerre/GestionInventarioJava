@@ -1,5 +1,6 @@
 com/brunoferre/gestioninventario/vista/FrmProductosFaltantes$1.class
 com/brunoferre/gestioninventario/vista/FrmHistorial$2.class
+com/brunoferre/gestioninventario/vista/FrmBuscarVenta$4.class
 com/brunoferre/gestioninventario/logica/Producto.class
 com/brunoferre/gestioninventario/vista/FrmVentas$5.class
 com/brunoferre/gestioninventario/vista/MiCuenta.class
@@ -10,6 +11,8 @@ com/brunoferre/gestioninventario/vista/FrmVentas$2.class
 com/brunoferre/gestioninventario/vista/FrmOpciones$8.class
 com/brunoferre/gestioninventario/persistence/PersonaJpaController.class
 com/brunoferre/gestioninventario/vista/Loader.class
+com/brunoferre/gestioninventario/vista/FrmBuscarVenta$1.class
+com/brunoferre/gestioninventario/logica/VentasDTO.class
 com/brunoferre/gestioninventario/vista/Login.class
 com/brunoferre/gestioninventario/persistence/DetalleVentaJpaController.class
 com/brunoferre/gestioninventario/vista/FrmProductos.class
@@ -21,6 +24,7 @@ com/brunoferre/gestioninventario/vista/FrmOpciones$10.class
 com/brunoferre/gestioninventario/vista/FrmOpciones$4.class
 com/brunoferre/gestioninventario/vista/FrmHistorial.class
 com/brunoferre/gestioninventario/vista/FrmOpciones$1.class
+com/brunoferre/gestioninventario/vista/FrmVentas$9.class
 com/brunoferre/gestioninventario/vista/FrmProductosFaltantes.class
 com/brunoferre/gestioninventario/GestionInventario.class
 com/brunoferre/gestioninventario/vista/FrmVentas$3.class
@@ -29,9 +33,12 @@ com/brunoferre/gestioninventario/vista/FrmVentas$6.class
 com/brunoferre/gestioninventario/logica/DetalleVenta.class
 com/brunoferre/gestioninventario/persistence/exceptions/PreexistingEntityException.class
 com/brunoferre/gestioninventario/persistence/ProductoJpaController.class
+com/brunoferre/gestioninventario/vista/FrmBuscarVenta$2.class
 com/brunoferre/gestioninventario/persistence/exceptions/IllegalOrphanException.class
 com/brunoferre/gestioninventario/vista/FrmProductos$3.class
 com/brunoferre/gestioninventario/vista/FrmOpciones$11.class
+com/brunoferre/gestioninventario/logica/DetallesVentaDTO.class
+com/brunoferre/gestioninventario/vista/FrmBuscarVenta.class
 com/brunoferre/gestioninventario/logica/Persona.class
 com/brunoferre/gestioninventario/vista/FrmVentas$7.class
 com/brunoferre/gestioninventario/vista/Login$2.class
@@ -45,6 +52,7 @@ com/brunoferre/gestioninventario/vista/MiCuenta$1.class
 com/brunoferre/gestioninventario/vista/FrmProductos$4.class
 com/brunoferre/gestioninventario/vista/FrmHistorial$1.class
 com/brunoferre/gestioninventario/vista/FrmVentas$4.class
+com/brunoferre/gestioninventario/vista/FrmBuscarVenta$3.class
 com/brunoferre/gestioninventario/vista/FrmVentas$8.class
 com/brunoferre/gestioninventario/persistence/exceptions/NonexistentEntityException.class
 com/brunoferre/gestioninventario/vista/FrmOpciones$9.class

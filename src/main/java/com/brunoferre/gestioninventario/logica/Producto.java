@@ -30,7 +30,7 @@ public class Producto implements Serializable {
     }
 
     public Producto(String nombre, int stock, Double precio) {
-        this.nombre = nombre;
+        this.nombre = nombre.toLowerCase();
         this.stock = stock;
         this.precio = precio;
     }

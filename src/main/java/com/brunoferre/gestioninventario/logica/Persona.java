@@ -27,11 +27,11 @@ public class Persona implements Serializable {
 
     public Persona(Long id, String nombre, String apellido, String dni, String telefono, String email) {
         this.id = id;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.dni = dni;
-        this.telefono = telefono;
-        this.email = email;
+        this.nombre = nombre.toLowerCase();
+        this.apellido = apellido.toLowerCase();
+        this.dni = dni.toLowerCase();
+        this.telefono = telefono.toLowerCase();
+        this.email = email.toLowerCase();
     }
 
     public Long getId() {

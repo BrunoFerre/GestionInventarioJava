@@ -67,7 +67,7 @@ public class FrmOpciones extends javax.swing.JFrame {
         btnVenta.setBackground(new java.awt.Color(0, 109, 208));
         btnVenta.setFont(new java.awt.Font("Ubuntu Mono", 1, 12)); // NOI18N
         btnVenta.setForeground(new java.awt.Color(255, 255, 255));
-        btnVenta.setText("NUEVA VENTA");
+        btnVenta.setText("GESTION VENTAS");
         btnVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVentaActionPerformed(evt);
@@ -155,9 +155,9 @@ public class FrmOpciones extends javax.swing.JFrame {
                 .addComponent(btnHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(27, 27, 27)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();

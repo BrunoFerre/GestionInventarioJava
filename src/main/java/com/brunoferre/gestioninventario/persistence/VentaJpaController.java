@@ -1,4 +1,3 @@
-
 package com.brunoferre.gestioninventario.persistence;
 
 import java.io.Serializable;
@@ -11,7 +10,9 @@ import com.brunoferre.gestioninventario.logica.Venta;
 import com.brunoferre.gestioninventario.persistence.exceptions.NonexistentEntityException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.TypedQuery;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -25,7 +26,7 @@ public class VentaJpaController implements Serializable {
     public VentaJpaController() {
         emf = Persistence.createEntityManagerFactory("GestionPU");
     }
-    
+
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
@@ -185,5 +186,21 @@ public class VentaJpaController implements Serializable {
             em.close();
         }
     }
-    
+
+    public Venta findVentaByNumeroVenta(String numeroVenta) {
+        EntityManager em = getEntityManager();
+        try {
+            TypedQuery<Venta> query = em.createQuery("SELECT v FROM Venta v WHERE numeroVenta = :numeroVenta", Venta.class);
+            query.setParameter("numeroVenta", numeroVenta);
+            return query.getSingleResult();
+        } catch (NoResultException ex) {
+            System.out.println("No se encontró producto con nombre: " + numeroVenta);
+            return null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e; // Relanzar la excepción para ver más detalles
+        } finally {
+            em.close();
+        }
+    }
 }

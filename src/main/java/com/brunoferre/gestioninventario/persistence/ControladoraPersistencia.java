@@ -4,6 +4,7 @@ import com.brunoferre.gestioninventario.logica.DetalleVenta;
 import com.brunoferre.gestioninventario.logica.Persona;
 import com.brunoferre.gestioninventario.logica.Producto;
 import com.brunoferre.gestioninventario.logica.Venta;
+import com.brunoferre.gestioninventario.logica.VentasDTO;
 import com.brunoferre.gestioninventario.persistence.exceptions.NonexistentEntityException;
 import java.time.LocalDate;
 import java.util.List;
@@ -99,6 +100,11 @@ public class ControladoraPersistencia {
         }
     }
 
+    public VentasDTO traerPorTicket(String ticket) {
+        Venta venta = ventaJpa.findVentaByNumeroVenta(ticket);
+        return new VentasDTO(venta);
+    }
+
     public boolean findPersonaByUsuario(String nombre, String dni) {
         try {
             Persona persona = personaJpa.findByUsuarioandPassword(nombre, dni);
@@ -107,5 +113,8 @@ public class ControladoraPersistencia {
             System.out.println(e.getMessage());
             return false;
         }
+    }
+    public List<DetalleVenta> getAllByVenta(Venta venta){
+        return detalleJpa.findAllByVenta(venta);
     }
 }
