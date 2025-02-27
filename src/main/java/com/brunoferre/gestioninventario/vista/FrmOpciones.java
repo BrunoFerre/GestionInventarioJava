@@ -72,7 +72,11 @@ public class FrmOpciones extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(0, 109, 208));
         jButton1.setFont(new java.awt.Font("Ubuntu Mono", 1, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/persona.png"))); // NOI18N
         jButton1.setText("MI CUENTA");
+        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jButton1.setIconTextGap(20);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -82,7 +86,10 @@ public class FrmOpciones extends javax.swing.JFrame {
         btnVenta.setBackground(new java.awt.Color(0, 109, 208));
         btnVenta.setFont(new java.awt.Font("Ubuntu Mono", 1, 12)); // NOI18N
         btnVenta.setForeground(new java.awt.Color(255, 255, 255));
+        btnVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/venta.png"))); // NOI18N
         btnVenta.setText("GESTION VENTAS");
+        btnVenta.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btnVenta.setIconTextGap(20);
         btnVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVentaActionPerformed(evt);
@@ -92,7 +99,10 @@ public class FrmOpciones extends javax.swing.JFrame {
         btnFaltantes.setBackground(new java.awt.Color(0, 109, 208));
         btnFaltantes.setFont(new java.awt.Font("Ubuntu Mono", 1, 12)); // NOI18N
         btnFaltantes.setForeground(new java.awt.Color(255, 255, 255));
-        btnFaltantes.setText("PRODUCTOS FALTANTES");
+        btnFaltantes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lista.png"))); // NOI18N
+        btnFaltantes.setText("PROD FALTANTES");
+        btnFaltantes.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btnFaltantes.setIconTextGap(10);
         btnFaltantes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFaltantesActionPerformed(evt);
@@ -102,7 +112,10 @@ public class FrmOpciones extends javax.swing.JFrame {
         btnGestionPr.setBackground(new java.awt.Color(0, 109, 208));
         btnGestionPr.setFont(new java.awt.Font("Ubuntu Mono", 1, 12)); // NOI18N
         btnGestionPr.setForeground(new java.awt.Color(255, 255, 255));
-        btnGestionPr.setText("GESTION DE PRODUCTOS");
+        btnGestionPr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons8-carrito-de-compras-48.png"))); // NOI18N
+        btnGestionPr.setText("PRODUCTOS");
+        btnGestionPr.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btnGestionPr.setIconTextGap(20);
         btnGestionPr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGestionPrActionPerformed(evt);
@@ -112,7 +125,10 @@ public class FrmOpciones extends javax.swing.JFrame {
         btnHistorial.setBackground(new java.awt.Color(0, 109, 208));
         btnHistorial.setFont(new java.awt.Font("Ubuntu Mono", 1, 12)); // NOI18N
         btnHistorial.setForeground(new java.awt.Color(255, 255, 255));
-        btnHistorial.setText("HISTORIAL DE VENTAS");
+        btnHistorial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons8-historia-de-la-actividad-48.png"))); // NOI18N
+        btnHistorial.setText("HISTORIAL VENTAS");
+        btnHistorial.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btnHistorial.setIconTextGap(10);
         btnHistorial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHistorialActionPerformed(evt);
@@ -122,7 +138,10 @@ public class FrmOpciones extends javax.swing.JFrame {
         btnBuscarVenta.setBackground(new java.awt.Color(0, 109, 208));
         btnBuscarVenta.setFont(new java.awt.Font("Ubuntu Mono", 1, 12)); // NOI18N
         btnBuscarVenta.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscarVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buscarPdf.png"))); // NOI18N
         btnBuscarVenta.setText("BUSCAR VENTA");
+        btnBuscarVenta.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btnBuscarVenta.setIconTextGap(20);
         btnBuscarVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarVentaActionPerformed(evt);
@@ -132,7 +151,9 @@ public class FrmOpciones extends javax.swing.JFrame {
         btnSalir.setBackground(new java.awt.Color(0, 109, 208));
         btnSalir.setFont(new java.awt.Font("Ubuntu Mono", 1, 12)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cerrarIcon.png"))); // NOI18N
         btnSalir.setText("CERRAR SISTEMA");
+        btnSalir.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
@@ -152,27 +173,27 @@ public class FrmOpciones extends javax.swing.JFrame {
                     .addComponent(btnGestionPr, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnFaltantes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnVenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(86, Short.MAX_VALUE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(80, 80, 80))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(btnVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(btnGestionPr, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnGestionPr, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(btnFaltantes, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnFaltantes, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(btnHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(btnBuscarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnBuscarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
 
         pack();

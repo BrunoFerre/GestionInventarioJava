@@ -88,7 +88,9 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel3.setText("CONTRASEÑA:");
 
-        btnIniciar.setBackground(new java.awt.Color(60, 216, 117));
+        btnIniciar.setBackground(new java.awt.Color(64, 239, 127));
+        btnIniciar.setForeground(new java.awt.Color(255, 255, 255));
+        btnIniciar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iniciar.png"))); // NOI18N
         btnIniciar.setText("INICIAR SESION");
         btnIniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,7 +98,9 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        btnCerrar.setBackground(new java.awt.Color(247, 42, 12));
+        btnCerrar.setBackground(new java.awt.Color(225, 70, 48));
+        btnCerrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cerrarIcon.png"))); // NOI18N
         btnCerrar.setText("SALIR");
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,8 +127,8 @@ public class Login extends javax.swing.JFrame {
                                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(172, 172, 172)
-                                .addComponent(btnIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(53, 53, 53)
+                                .addComponent(btnIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(43, 43, 43)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtPassword)
                             .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -147,8 +151,8 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(txtPassword))
                 .addGap(86, 86, 86)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnIniciar, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
-                    .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnIniciar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addContainerGap())

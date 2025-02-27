@@ -62,5 +62,4 @@ com\brunoferre\gestioninventario\vista\FrmProductos.class
 com\brunoferre\gestioninventario\persistence\DetalleVentaJpaController.class
 com\brunoferre\gestioninventario\vista\FrmProductos$5.class
 com\brunoferre\gestioninventario\vista\MiCuenta.class
-com\brunoferre\gestioninventario\vista\FrmVentas$9.class
 com\brunoferre\gestioninventario\vista\FrmHistorial$1.class

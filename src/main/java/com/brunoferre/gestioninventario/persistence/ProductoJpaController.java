@@ -205,14 +205,14 @@ public class ProductoJpaController implements Serializable {
         }
     }
 
-    public Producto findProductoByCodigo(String codigo) {
+    public Producto findProductoByCodigo(String campo) {
         EntityManager em = getEntityManager();
         try {
-            TypedQuery<Producto> query = em.createQuery("SELECT p FROM productos p WHERE p.codigoProducto = :codigo", Producto.class);
-            query.setParameter("codigo", codigo);
+            TypedQuery<Producto> query = em.createQuery("SELECT p FROM productos p WHERE p.codigoProducto = :campo OR p.nombre = :campo", Producto.class);
+            query.setParameter("campo", campo);
             return query.getSingleResult();
         } catch (NoResultException e) {
-            System.out.println("No se encontró producto con nombre: " + codigo);
+            System.out.println("No se encontró producto con nombre: " + campo);
             return null;
         } catch (Exception e) {
             e.printStackTrace();

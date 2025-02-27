@@ -35,9 +35,9 @@
                   <Component id="btnGestionPr" max="32767" attributes="0"/>
                   <Component id="btnFaltantes" max="32767" attributes="0"/>
                   <Component id="btnVenta" max="32767" attributes="0"/>
-                  <Component id="jButton1" min="-2" pref="220" max="-2" attributes="0"/>
+                  <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="86" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -45,20 +45,20 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" pref="50" max="-2" attributes="0"/>
+              <Component id="jButton1" min="-2" pref="55" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-              <Component id="btnVenta" min="-2" pref="50" max="-2" attributes="0"/>
+              <Component id="btnVenta" min="-2" pref="55" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-              <Component id="btnGestionPr" min="-2" pref="50" max="-2" attributes="0"/>
+              <Component id="btnGestionPr" min="-2" pref="55" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-              <Component id="btnFaltantes" min="-2" pref="50" max="-2" attributes="0"/>
+              <Component id="btnFaltantes" min="-2" pref="55" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-              <Component id="btnHistorial" min="-2" pref="50" max="-2" attributes="0"/>
+              <Component id="btnHistorial" min="-2" pref="55" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-              <Component id="btnBuscarVenta" min="-2" pref="50" max="-2" attributes="0"/>
+              <Component id="btnBuscarVenta" min="-2" pref="55" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-              <Component id="btnSalir" min="-2" pref="50" max="-2" attributes="0"/>
-              <EmptySpace pref="32" max="32767" attributes="0"/>
+              <Component id="btnSalir" min="-2" pref="55" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -75,7 +75,13 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/persona.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="MI CUENTA"/>
+        <Property name="horizontalAlignment" type="int" value="4"/>
+        <Property name="horizontalTextPosition" type="int" value="2"/>
+        <Property name="iconTextGap" type="int" value="20"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
@@ -92,7 +98,12 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/venta.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="GESTION VENTAS"/>
+        <Property name="horizontalTextPosition" type="int" value="2"/>
+        <Property name="iconTextGap" type="int" value="20"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVentaActionPerformed"/>
@@ -109,7 +120,12 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="PRODUCTOS FALTANTES"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/lista.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="PROD FALTANTES"/>
+        <Property name="horizontalTextPosition" type="int" value="2"/>
+        <Property name="iconTextGap" type="int" value="10"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFaltantesActionPerformed"/>
@@ -126,7 +142,12 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="GESTION DE PRODUCTOS"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/icons8-carrito-de-compras-48.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="PRODUCTOS"/>
+        <Property name="horizontalTextPosition" type="int" value="2"/>
+        <Property name="iconTextGap" type="int" value="20"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGestionPrActionPerformed"/>
@@ -143,7 +164,12 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="HISTORIAL DE VENTAS"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/icons8-historia-de-la-actividad-48.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="HISTORIAL VENTAS"/>
+        <Property name="horizontalTextPosition" type="int" value="2"/>
+        <Property name="iconTextGap" type="int" value="10"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHistorialActionPerformed"/>
@@ -160,7 +186,12 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/buscarPdf.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="BUSCAR VENTA"/>
+        <Property name="horizontalTextPosition" type="int" value="2"/>
+        <Property name="iconTextGap" type="int" value="20"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarVentaActionPerformed"/>
@@ -177,7 +208,11 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/cerrarIcon.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="CERRAR SISTEMA"/>
+        <Property name="horizontalTextPosition" type="int" value="2"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalirActionPerformed"/>
