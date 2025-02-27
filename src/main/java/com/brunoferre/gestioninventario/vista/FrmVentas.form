@@ -219,9 +219,9 @@
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnQuitar" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jButton4" alignment="0" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="btnQuitar" min="-2" pref="35" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
               </Group>
@@ -245,9 +245,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtProducto">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtStock">
           <Properties>
@@ -258,9 +255,6 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtIdProd">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnBuscarCodigo">
           <Properties>

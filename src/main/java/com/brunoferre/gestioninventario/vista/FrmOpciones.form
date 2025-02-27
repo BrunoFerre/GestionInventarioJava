@@ -30,7 +30,7 @@
               <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="btnSalir" max="32767" attributes="0"/>
-                  <Component id="btnCerrar" max="32767" attributes="0"/>
+                  <Component id="btnBuscarVenta" max="32767" attributes="0"/>
                   <Component id="btnHistorial" max="32767" attributes="0"/>
                   <Component id="btnGestionPr" max="32767" attributes="0"/>
                   <Component id="btnFaltantes" max="32767" attributes="0"/>
@@ -55,7 +55,7 @@
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Component id="btnHistorial" min="-2" pref="50" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-              <Component id="btnCerrar" min="-2" pref="50" max="-2" attributes="0"/>
+              <Component id="btnBuscarVenta" min="-2" pref="50" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Component id="btnSalir" min="-2" pref="50" max="-2" attributes="0"/>
               <EmptySpace pref="32" max="32767" attributes="0"/>
@@ -149,7 +149,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHistorialActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnCerrar">
+    <Component class="javax.swing.JButton" name="btnBuscarVenta">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="d0" green="6d" red="0" type="rgb"/>
@@ -160,10 +160,10 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="CERRAR SESION"/>
+        <Property name="text" type="java.lang.String" value="BUSCAR VENTA"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCerrarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarVentaActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnSalir">

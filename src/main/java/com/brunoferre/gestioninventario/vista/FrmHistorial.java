@@ -7,7 +7,13 @@ package com.brunoferre.gestioninventario.vista;
 import com.brunoferre.gestioninventario.logica.Controladora;
 import com.brunoferre.gestioninventario.logica.Producto;
 import com.brunoferre.gestioninventario.logica.Venta;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -17,11 +23,13 @@ import javax.swing.table.DefaultTableModel;
 public class FrmHistorial extends javax.swing.JFrame {
 
     Controladora control = new Controladora();
+    private String ultimoCopiado = ""; // Almacena el último valor copiado
 
     public FrmHistorial() {
         initComponents();
         this.setLocationRelativeTo(null);
         cargarDatos();
+
     }
 
     /**
@@ -143,5 +151,31 @@ public class FrmHistorial extends javax.swing.JFrame {
             }
         }
         tbHistorial.setModel(model);
+        tbHistorial.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int row = tbHistorial.getSelectedRow();
+                int column = tbHistorial.columnAtPoint(e.getPoint());
+
+                if (row != -1 && column == 1) { // Si se hace clic en la columna "Número / Ticker"
+                    Object value = tbHistorial.getValueAt(row, column);
+                    if (value != null) {
+                        String nuevoValor = value.toString();
+                        if (!nuevoValor.equals(ultimoCopiado)) { // Solo copia si es diferente
+                            copyToClipboard(nuevoValor);
+                            ultimoCopiado = nuevoValor;
+                            JOptionPane.showMessageDialog(null,"TICKET: "+ ultimoCopiado,"COPIADO",JOptionPane.INFORMATION_MESSAGE);
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+// Método para copiar texto al portapapeles
+    private void copyToClipboard(String text) {
+        StringSelection selection = new StringSelection(text);
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(selection, selection);
     }
 }

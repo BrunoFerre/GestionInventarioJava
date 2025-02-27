@@ -2,10 +2,16 @@ package com.brunoferre.gestioninventario.vista;
 
 import com.brunoferre.gestioninventario.logica.Controladora;
 import com.brunoferre.gestioninventario.logica.DetallesVentaDTO;
+import com.brunoferre.gestioninventario.logica.FacturaPDF;
 import com.brunoferre.gestioninventario.logica.Venta;
 import com.brunoferre.gestioninventario.logica.VentasDTO;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -13,6 +19,8 @@ public class FrmBuscarVenta extends javax.swing.JFrame {
 
     Controladora control = new Controladora();
     Venta ventaC = null;
+    List<DetallesVentaDTO> listaDettale = null;
+    FacturaPDF pdf = new FacturaPDF();
 
     public FrmBuscarVenta() {
         initComponents();
@@ -34,7 +42,7 @@ public class FrmBuscarVenta extends javax.swing.JFrame {
         txtTotal = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        btnVerFactura = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -142,8 +150,13 @@ public class FrmBuscarVenta extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("OPCIONES"));
 
-        jButton2.setBackground(new java.awt.Color(39, 210, 225));
-        jButton2.setText("VER FACTURA");
+        btnVerFactura.setBackground(new java.awt.Color(39, 210, 225));
+        btnVerFactura.setText("VER FACTURA");
+        btnVerFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerFacturaActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(39, 210, 225));
         jButton3.setText("SALIR");
@@ -161,7 +174,7 @@ public class FrmBuscarVenta extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
+                        .addComponent(btnVerFactura, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -171,7 +184,7 @@ public class FrmBuscarVenta extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnVerFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
@@ -251,10 +264,18 @@ public class FrmBuscarVenta extends javax.swing.JFrame {
         limpiarCampos();
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void btnVerFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerFacturaActionPerformed
+        try {
+            FacturaPDF.crearFactura(ventaC, listaDettale);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERROR AL CARGAR EL PDF","ERROR",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnVerFacturaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnVerFactura;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
@@ -293,7 +314,7 @@ private void traerVenta() {
         tabla.setColumnIdentifiers(titulosTabla);
 
         //Traer de la db
-        List<DetallesVentaDTO> listaDettale = control.traerDetalles(ventaC);
+        listaDettale = control.traerDetalles(ventaC);
         if (listaDettale != null) {
             for (DetallesVentaDTO pr : listaDettale) {
                 Object[] objeto = {pr.getId(), pr.getIdProducto(), pr.getProducto(), pr.getStock(), pr.getSubTotal()};

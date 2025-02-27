@@ -90,16 +90,12 @@ public class FrmVentas extends javax.swing.JFrame {
 
         jLabel4.setText("STOCK");
 
-        txtProducto.setEditable(false);
-
         txtStock.setEditable(false);
         txtStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtStockActionPerformed(evt);
             }
         });
-
-        txtIdProd.setEditable(false);
 
         btnBuscarCodigo.setBackground(new java.awt.Color(17, 194, 61));
         btnBuscarCodigo.setForeground(new java.awt.Color(255, 255, 255));
@@ -218,9 +214,9 @@ public class FrmVentas extends javax.swing.JFrame {
                         .addGap(15, 15, 15)
                         .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnQuitar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnQuitar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14))
         );
 
@@ -454,6 +450,7 @@ public class FrmVentas extends javax.swing.JFrame {
         txtStock.setText("");
         txtIdProd.setText("");
     }
+
     public void anidirProductos() {
         Long idProducto = producto.getId();
         String nombreProducto = producto.getNombre();
@@ -490,10 +487,8 @@ public class FrmVentas extends javax.swing.JFrame {
                 // Sumamos la cantidad y actualizamos el subtotal
                 int nuevaCantidad = (int) tabla.getValueAt(i, 3) + cantidad;
                 Double nuevoSubTotal = nuevaCantidad * producto.getPrecio();
-
                 tabla.setValueAt(nuevaCantidad, i, 3); // Actualiza la cantidad
                 tabla.setValueAt(nuevoSubTotal, i, 4); // Actualiza el subtotal
-
                 encontrado = true;
                 break;
             }
@@ -503,7 +498,6 @@ public class FrmVentas extends javax.swing.JFrame {
             Object[] objeto = {idProducto, nombreProducto, codigo, cantidad, subTotal};
             tabla.addRow(objeto);
         }
-
         tblDetalles.setModel(tabla);
         totalAmount();
     }

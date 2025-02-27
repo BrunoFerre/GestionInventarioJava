@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.brunoferre.gestioninventario.vista;
 
 import java.awt.Dimension;
@@ -34,11 +30,11 @@ public class FrmOpciones extends javax.swing.JFrame {
         GraphicsDevice[] screens = ge.getScreenDevices(); // Obtiene la pantalla principal
         Rectangle bounds;
         if (screens.length > 1) {
-            bounds = screens[0].getDefaultConfiguration().getBounds();
+            bounds = screens[1].getDefaultConfiguration().getBounds();
 
         } else {
             // Si solo hay una pantalla, usar la principal
-            bounds = screens[1].getDefaultConfiguration().getBounds();
+            bounds = screens[0].getDefaultConfiguration().getBounds();
         }
         // Definir margen a la izquierda
         int margenIzquierda = 20;
@@ -65,7 +61,7 @@ public class FrmOpciones extends javax.swing.JFrame {
         btnFaltantes = new javax.swing.JButton();
         btnGestionPr = new javax.swing.JButton();
         btnHistorial = new javax.swing.JButton();
-        btnCerrar = new javax.swing.JButton();
+        btnBuscarVenta = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -123,13 +119,13 @@ public class FrmOpciones extends javax.swing.JFrame {
             }
         });
 
-        btnCerrar.setBackground(new java.awt.Color(0, 109, 208));
-        btnCerrar.setFont(new java.awt.Font("Ubuntu Mono", 1, 12)); // NOI18N
-        btnCerrar.setForeground(new java.awt.Color(255, 255, 255));
-        btnCerrar.setText("CERRAR SESION");
-        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarVenta.setBackground(new java.awt.Color(0, 109, 208));
+        btnBuscarVenta.setFont(new java.awt.Font("Ubuntu Mono", 1, 12)); // NOI18N
+        btnBuscarVenta.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscarVenta.setText("BUSCAR VENTA");
+        btnBuscarVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCerrarActionPerformed(evt);
+                btnBuscarVentaActionPerformed(evt);
             }
         });
 
@@ -151,7 +147,7 @@ public class FrmOpciones extends javax.swing.JFrame {
                 .addGap(80, 80, 80)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnBuscarVenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnHistorial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnGestionPr, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnFaltantes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -173,7 +169,7 @@ public class FrmOpciones extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(btnHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnBuscarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(32, Short.MAX_VALUE))
@@ -237,13 +233,6 @@ public class FrmOpciones extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
-        // TODO add your handling code here:
-        dispose();
-        Login login = new Login();
-        login.setVisible(true);
-    }//GEN-LAST:event_btnCerrarActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         MiCuenta cuenta = new MiCuenta();
@@ -298,9 +287,15 @@ public class FrmOpciones extends javax.swing.JFrame {
         worker.execute();
     }//GEN-LAST:event_btnHistorialActionPerformed
 
+    private void btnBuscarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarVentaActionPerformed
+        // TODO add your handling code here:
+        FrmBuscarVenta frmBuscarVenta = new FrmBuscarVenta();
+        frmBuscarVenta.setVisible(true);
+    }//GEN-LAST:event_btnBuscarVentaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCerrar;
+    private javax.swing.JButton btnBuscarVenta;
     private javax.swing.JButton btnFaltantes;
     private javax.swing.JButton btnGestionPr;
     private javax.swing.JButton btnHistorial;
