@@ -5,6 +5,11 @@
 package com.brunoferre.gestioninventario.vista;
 
 import java.awt.Dimension;
+import java.awt.DisplayMode;
+import java.awt.GraphicsConfiguration;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import javax.swing.SwingWorker;
 
@@ -23,13 +28,27 @@ public class FrmOpciones extends javax.swing.JFrame {
 
     public FrmOpciones() {
         initComponents();
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int x = (int) (screenSize.getWidth() - 1);// Posición en la derecha
-        int y = (screenSize.height - this.getHeight()) / 2;
+        // Obtener el tamaño de la pantalla y posicionar en la izquierda
+        // Obtener la pantalla principal
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice[] screens = ge.getScreenDevices(); // Obtiene la pantalla principal
+        Rectangle bounds;
+        if (screens.length > 1) {
+            bounds = screens[0].getDefaultConfiguration().getBounds();
+
+        } else {
+            // Si solo hay una pantalla, usar la principal
+            bounds = screens[1].getDefaultConfiguration().getBounds();
+        }
+        // Definir margen a la izquierda
+        int margenIzquierda = 20;
+        // Posicionar en la izquierda y centrar verticalmente
+        int x = bounds.x + margenIzquierda; // A la izquierda de la pantalla seleccionada
+        int y = bounds.y + (bounds.height - this.getHeight()) / 2;
         this.setLocation(x, y);
         this.setResizable(false);
         this.setEnabled(true);
-
+        this.setVisible(true);
     }
 
     /**

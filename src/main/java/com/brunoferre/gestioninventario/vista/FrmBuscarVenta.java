@@ -41,6 +41,7 @@ public class FrmBuscarVenta extends javax.swing.JFrame {
         tblDetalle = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("BUSCAR VENTAS");
         setUndecorated(true);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("BUSCAR VENTAS"));
@@ -48,9 +49,12 @@ public class FrmBuscarVenta extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("INGRESE NRO DE TICKET");
 
+        txtTicket.setFont(new java.awt.Font("Ubuntu Sans", 0, 14)); // NOI18N
         txtTicket.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTicket.setToolTipText("INGRESE NRO DE TICKET");
 
+        btnBuscar.setBackground(new java.awt.Color(13, 110, 224));
+        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscar.setText("BUSCAR");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,12 +78,13 @@ public class FrmBuscarVenta extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 18, Short.MAX_VALUE))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(txtTicket)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 10, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("DATOS DE LA VENTA"));
@@ -92,6 +97,8 @@ public class FrmBuscarVenta extends javax.swing.JFrame {
 
         txtTotal.setEditable(false);
 
+        jButton4.setBackground(new java.awt.Color(217, 194, 32));
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("LIMPIAR DATOS");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,8 +142,10 @@ public class FrmBuscarVenta extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("OPCIONES"));
 
+        jButton2.setBackground(new java.awt.Color(39, 210, 225));
         jButton2.setText("VER FACTURA");
 
+        jButton3.setBackground(new java.awt.Color(39, 210, 225));
         jButton3.setText("SALIR");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
