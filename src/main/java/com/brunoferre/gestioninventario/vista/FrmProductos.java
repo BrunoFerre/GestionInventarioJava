@@ -57,7 +57,7 @@ public class FrmProductos extends javax.swing.JFrame {
 
         btnBuscarP.setBackground(new java.awt.Color(204, 204, 204));
         btnBuscarP.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnBuscarP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconBuscar.png"))); // NOI18N
+        btnBuscarP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconAd.png"))); // NOI18N
         btnBuscarP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarPActionPerformed(evt);

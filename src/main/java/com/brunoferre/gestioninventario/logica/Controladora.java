@@ -1,4 +1,4 @@
-package com.brunoferre.gestioninventario.logica;
+    package com.brunoferre.gestioninventario.logica;
 
 import com.brunoferre.gestioninventario.persistence.ControladoraPersistencia;
 import com.brunoferre.gestioninventario.persistence.exceptions.NonexistentEntityException;
@@ -84,8 +84,18 @@ public class Controladora {
         return controlPersis.traerVentas();
     }
 
-    public boolean verificarUsuario(String nombre, String dni) {
-        return controlPersis.findPersonaByUsuario(nombre, dni);
+    public boolean iniciarSesion(String email, String dni) {
+        System.out.println("Iniciando sesión con Email: " + email + ", DNI: " + dni);
+
+        Persona persona = controlPersis.findByEmailAndDdni(email, dni);
+
+        if (persona != null) {
+            System.out.println("Usuario encontrado: " + persona.getEmail());
+            return persona.getDni().equals(dni); // ⚠️ Verifica si la contraseña está encriptada
+        }
+
+        System.out.println("Usuario NO encontrado");
+        return false;
     }
 
     public VentasDTO traerVentaporTicket(String ticket) {
@@ -95,5 +105,9 @@ public class Controladora {
     public List<DetallesVentaDTO> traerDetalles(Venta venta) {
         List<DetallesVentaDTO> detalle = controlPersis.getAllByVenta(venta).stream().map(dv -> new DetallesVentaDTO(dv)).toList();
         return detalle;
+    }
+
+    public void guardarPersona(Persona persona) {
+        controlPersis.guardarPersona(persona);
     }
 }

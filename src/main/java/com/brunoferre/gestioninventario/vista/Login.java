@@ -7,6 +7,7 @@ package com.brunoferre.gestioninventario.vista;
 import com.brunoferre.gestioninventario.logica.Controladora;
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 
 /**
@@ -17,7 +18,6 @@ public class Login extends javax.swing.JFrame {
 
     Controladora control = new Controladora();
     Loader loader = new Loader();
-    FrmOpciones frmOpciones = new FrmOpciones();
 
     public Login() {
         initComponents();
@@ -42,11 +42,11 @@ public class Login extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JPasswordField();
         btnIniciar = new javax.swing.JButton();
         btnCerrar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        txtUsuario = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
+        txtDni = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(32, 174, 208));
@@ -65,9 +65,9 @@ public class Login extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(237, 237, 237)
+                .addGap(240, 240, 240)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(240, 240, 240))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -82,11 +82,11 @@ public class Login extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel2.setText("USUARIO:");
+        jLabel2.setText("DIRECCION EMAIL:");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel3.setText("CONTRASEÑA:");
+        jLabel3.setText("DNI:");
 
         btnIniciar.setBackground(new java.awt.Color(64, 239, 127));
         btnIniciar.setForeground(new java.awt.Color(255, 255, 255));
@@ -108,9 +108,11 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Necesitas ayuda, conctactate con el sevicio tecnico");
+        jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        txtUsuario.setText("fbrunomarcos@gmail.com");
+        txtEmail.setText("fbrunomarcos@gmail.com");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -123,20 +125,21 @@ public class Login extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(94, 94, 94)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(172, 172, 172)
                                 .addComponent(btnIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(43, 43, 43)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtPassword)
                             .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)))
+                            .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                            .addComponent(txtDni))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(164, 164, 164)
-                        .addComponent(jLabel5)))
-                .addContainerGap(131, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,12 +147,12 @@ public class Login extends javax.swing.JFrame {
                 .addGap(46, 46, 46)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE))
+                    .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE))
                 .addGap(33, 33, 33)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                    .addComponent(txtPassword))
-                .addGap(86, 86, 86)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(81, 81, 81)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnIniciar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -162,8 +165,12 @@ public class Login extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,34 +184,37 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        // TODO add your handling code here:
-
+        // TODO add your handling code here:                                      
         loader.setVisible(true);
+
         SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
             @Override
             protected Void doInBackground() throws Exception {
-                // Aquí iría el código para realizar la consulta a la base de datos
-                if (iniciarSesion()) {
-                    FrmOpciones frmOpciones = new FrmOpciones();
-                    frmOpciones.setVisible(true);
-                    dispose();
+                // Simulamos una consulta con retardo (puedes reemplazar esto con la consulta real)
+                Thread.sleep(3000);
+
+                if (iniciarSesion()) { // Si el inicio de sesión es exitoso
+                    SwingUtilities.invokeLater(() -> {
+                        FrmOpciones frmOpciones = new FrmOpciones();
+                        frmOpciones.setVisible(true);
+                        dispose(); // Cierra la ventana de login
+                    });
                 } else {
-                    JOptionPane.showMessageDialog(null, "Error al iniciar sesion");
+                    SwingUtilities.invokeLater(() -> {
+                        JOptionPane.showMessageDialog(null, "Error al iniciar sesión", "Error", JOptionPane.ERROR_MESSAGE);
+                    });
                 }
-                // Simulamos la consulta con un retraso de 3 segundos (puedes reemplazar esto con tu consulta real)
                 return null;
             }
 
             @Override
             protected void done() {
-                // Cerrar el loader y abrir la ventana de productos
-                loader.dispose();
-                frmOpciones.setVisible(true);
+                loader.dispose(); // Ocultar loader después de completar el proceso
             }
         };
 
-        // Iniciar el trabajador en segundo plano
-        worker.execute();
+        worker.execute(); // Iniciar el proceso en segundo plano
+
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
@@ -222,13 +232,15 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField txtPassword;
-    private javax.swing.JTextField txtUsuario;
+    private javax.swing.JPasswordField txtDni;
+    private javax.swing.JTextField txtEmail;
     // End of variables declaration//GEN-END:variables
 private boolean iniciarSesion() {
-        String nombre = txtUsuario.getText();
-        String dni = txtPassword.getPassword().toString();
-        return control.verificarUsuario(nombre, dni);
+        char[] passwordArray = txtDni.getPassword();
+        String nombre = txtEmail.getText().toLowerCase();
+        String dni = new String(passwordArray);
+        System.out.println(dni);
+        return control.iniciarSesion(nombre, dni);
     }
 ;
 }

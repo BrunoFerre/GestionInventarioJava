@@ -7,11 +7,13 @@ import jakarta.persistence.EntityManagerFactory;
 import java.io.Serializable;
 import jakarta.persistence.Query;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 import java.util.List;
+import java.util.Optional;
 
 public class PersonaJpaController implements Serializable {
 
@@ -132,17 +134,25 @@ public class PersonaJpaController implements Serializable {
         }
     }
 
-    public Persona findByUsuarioandPassword(String email, String dni) {
-        EntityManager em = getEntityManager();
-        String sql = "SELECT p FROM Persona p WHERE p.email = :email AND dni = :dni";
-        TypedQuery<Persona> query = em.createQuery(sql, Persona.class);
-        query.setParameter("email", email);
-        query.setParameter("dni", dni);
+    public Optional<Persona> findByEmailAndDni(String email, String dni) {
         try {
-            return query.getSingleResult();
+            TypedQuery<Persona> query = getEntityManager().createQuery(
+                    "SELECT p FROM Persona p WHERE p.email = :email AND p.dni = :dni", Persona.class
+            );
+            query.setParameter("email", email);
+            query.setParameter("dni", dni);
+            List<Persona> resultados = query.getResultList(); // Evita excepciones
+            if (resultados.isEmpty()) {
+                System.out.println("No se encontró ninguna persona con email: " + email + " y DNI: " + dni);
+                return Optional.empty();
+            }
+
+            System.out.println("Persona encontrada: " + resultados.get(0).getEmail());
+            return Optional.of(resultados.get(0));
+
         } catch (Exception e) {
-            System.out.println(e.getCause());
-            return null;
+            e.printStackTrace(); // Captura cualquier otro error
+            return Optional.empty();
         }
     }
 

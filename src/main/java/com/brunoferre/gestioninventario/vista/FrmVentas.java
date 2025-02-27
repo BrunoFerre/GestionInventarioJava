@@ -112,6 +112,7 @@ public class FrmVentas extends javax.swing.JFrame {
         jButton4.setBackground(new java.awt.Color(79, 220, 79));
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconAd.png"))); // NOI18N
+        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -121,6 +122,7 @@ public class FrmVentas extends javax.swing.JFrame {
         btnQuitar.setBackground(new java.awt.Color(255, 45, 45));
         btnQuitar.setForeground(new java.awt.Color(255, 255, 255));
         btnQuitar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/quitar.png"))); // NOI18N
+        btnQuitar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnQuitar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnQuitarActionPerformed(evt);
@@ -157,7 +159,7 @@ public class FrmVentas extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -367,12 +369,18 @@ public class FrmVentas extends javax.swing.JFrame {
 
     private void btnQuitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarActionPerformed
         // TODO add your handling code here:
+
         removerProducto();
     }//GEN-LAST:event_btnQuitarActionPerformed
 
     private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
         // TODO add your handling code here:
-        generarVenta();
+        int opcion = JOptionPane.showConfirmDialog(null, "Confirmar la venta?", "Confirmar", JOptionPane.YES_NO_OPTION);
+        if (opcion == JOptionPane.YES_OPTION) {
+            generarVenta();
+        } else {
+            JOptionPane.showMessageDialog(null, "Acción cancelada.");
+        }
     }//GEN-LAST:event_btnGenerarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -463,7 +471,7 @@ public class FrmVentas extends javax.swing.JFrame {
         for (int i = 0; i < tabla.getRowCount(); i++) {
             if (tabla.getValueAt(i, 2).equals(codigo)) { // Columna 2 es el código
                 // Sumamos la cantidad y actualizamos el subtotal
-                int nuevaCantidad =  cantidad;
+                int nuevaCantidad = cantidad;
                 Double nuevoSubTotal = nuevaCantidad * producto.getPrecio();
                 tabla.setValueAt(nuevaCantidad, i, 3); // Actualiza la cantidad
                 tabla.setValueAt(nuevoSubTotal, i, 4); // Actualiza el subtotal
@@ -494,7 +502,8 @@ public class FrmVentas extends javax.swing.JFrame {
     public void removerProducto() {
         DefaultTableModel model = (DefaultTableModel) tblDetalles.getModel();
         int fila = tblDetalles.getSelectedRow();
-        if (fila >= 0) {
+        int opcion = JOptionPane.showConfirmDialog(null, "Desea quitar el producto?", "Confirmar", JOptionPane.YES_NO_OPTION);
+        if (fila >= 0 && opcion == JOptionPane.YES_NO_OPTION) {
             model.removeRow(fila);
             totalAmount();
         } else {
@@ -542,9 +551,9 @@ public class FrmVentas extends javax.swing.JFrame {
 
     private Producto traerpor(int opcion) {
         if (opcion == 1) {
-            return (Producto) control.buscarProductoCodigo(txtCodigoPr.getText());
+            return (Producto) control.buscarProductoCodigo(txtCodigoPr.getText().toLowerCase());
         } else {
-            return (Producto) control.buscarProductoCodigo(txtNombre.getText());
+            return (Producto) control.buscarProductoCodigo(txtNombre.getText().toLowerCase());
         }
     }
 }

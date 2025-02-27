@@ -30,8 +30,14 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" max="32767" attributes="0"/>
-          <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jPanel1" max="32767" attributes="0"/>
+                  <Component id="jPanel2" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -61,9 +67,9 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="237" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="240" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" pref="265" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="240" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -111,8 +117,8 @@
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jLabel3" pref="211" max="32767" attributes="0"/>
-                                      <Component id="jLabel2" max="32767" attributes="0"/>
+                                      <Component id="jLabel3" max="32767" attributes="0"/>
+                                      <Component id="jLabel2" pref="211" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -122,17 +128,18 @@
                           </Group>
                           <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtPassword" max="32767" attributes="0"/>
                               <Component id="btnCerrar" min="-2" pref="180" max="-2" attributes="0"/>
-                              <Component id="txtUsuario" pref="237" max="32767" attributes="0"/>
+                              <Component id="txtEmail" pref="237" max="32767" attributes="0"/>
+                              <Component id="txtDni" max="32767" attributes="0"/>
                           </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="164" max="-2" attributes="0"/>
-                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel5" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="131" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -142,14 +149,14 @@
                   <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jLabel2" max="32767" attributes="0"/>
-                      <Component id="txtUsuario" pref="43" max="32767" attributes="0"/>
+                      <Component id="txtEmail" pref="43" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jLabel3" pref="40" max="32767" attributes="0"/>
-                      <Component id="txtPassword" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel3" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="txtDni" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="btnCerrar" max="32767" attributes="0"/>
                       <Component id="btnIniciar" max="32767" attributes="0"/>
@@ -168,7 +175,7 @@
               <Font name="Dialog" size="18" style="0"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="2"/>
-            <Property name="text" type="java.lang.String" value="USUARIO:"/>
+            <Property name="text" type="java.lang.String" value="DIRECCION EMAIL:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
@@ -177,10 +184,8 @@
               <Font name="Dialog" size="18" style="0"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="2"/>
-            <Property name="text" type="java.lang.String" value="CONTRASE&#xd1;A:"/>
+            <Property name="text" type="java.lang.String" value="DNI:"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JPasswordField" name="txtPassword">
         </Component>
         <Component class="javax.swing.JButton" name="btnIniciar">
           <Properties>
@@ -218,13 +223,17 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Necesitas ayuda, conctactate con el sevicio tecnico"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtUsuario">
+        <Component class="javax.swing.JTextField" name="txtEmail">
           <Properties>
             <Property name="text" type="java.lang.String" value="fbrunomarcos@gmail.com"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="txtDni">
         </Component>
       </SubComponents>
     </Container>
