@@ -12,12 +12,14 @@ import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.properties.HorizontalAlignment;
 import com.itextpdf.layout.properties.TextAlignment;
 import com.itextpdf.layout.properties.UnitValue;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.format.DateTimeFormatter;
@@ -52,19 +54,26 @@ public class FacturaPDF {
         Document document = new Document(pdf, PageSize.A4);
         document.setMargins(20, 10, 20, 10);
 
-        // **Encabezado con Logo, Texto "Factura Nro:" y Número de Factura**
-        Table headerTable = new Table(UnitValue.createPercentArray(new float[]{1, 2, 1})).useAllAvailableWidth();
+        // **Obtener la imagen desde el classpath (src/images/avatar.jpg)**
+        InputStream imageStream = FacturaPDF.class.getResourceAsStream("/images/avatar.jpg");
+        System.out.println(imageStream);
+        Image logo = null;
 
-        // **1. Logo (Izquierda)**
-        String logoPath = "logo.png"; // Ruta del logo (debes cambiarlo por la ruta real)
-        try {
-            ImageData logoData = ImageDataFactory.create(logoPath);
-            Image logo = new Image(logoData).setWidth(60).setHeight(60);
-            headerTable.addCell(new Cell().add(logo).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.LEFT));
-        } catch (Exception e) {
-            headerTable.addCell(new Cell().add(new Paragraph("No Logo")).setBorder(Border.NO_BORDER));
+        if (imageStream != null) {
+            byte[] imageBytes = imageStream.readAllBytes(); // Leer imagen
+            ImageData imageData = ImageDataFactory.create(imageBytes);
+            logo = new Image(imageData).setWidth(70).setHeight(70); // Tamaño del logo
         }
 
+        // **Encabezado con Logo, Texto "Factura Nro:" y Número de Factura**
+        Table headerTable = new Table(UnitValue.createPercentArray(new float[]{2, 2, 2})).useAllAvailableWidth();
+
+        // **1. Logo (Izquierda)**
+        if (logo != null) {
+            headerTable.addCell(new Cell().add(logo).setBorder(Border.NO_BORDER).setTextAlignment(TextAlignment.LEFT));
+        } else {
+            headerTable.addCell(new Cell().add(new Paragraph("No Logo")).setBorder(Border.NO_BORDER));
+        }
         // **2. Título "Factura Nro:" (Centro)**
         Paragraph titulo = new Paragraph("Factura Nro:")
                 .setFontSize(14)
@@ -75,7 +84,7 @@ public class FacturaPDF {
         Paragraph numeroFactura = new Paragraph("N-" + venta.getNumeroVenta())
                 .setFontSize(14)
                 .setTextAlignment(TextAlignment.RIGHT);
-        headerTable.addCell(new Cell().add(numeroFactura).setBorder(Border.NO_BORDER));
+        headerTable.addCell(new Cell().add(numeroFactura).setBorder(Border.NO_BORDER)).setHeight(UnitValue.createPercentValue(30));
 
         document.add(headerTable);
         document.add(new Paragraph("\n")); // Espacio después del encabezado
@@ -87,29 +96,32 @@ public class FacturaPDF {
                 .setMarginBottom(15));
 
         // **Tabla de Detalles**
-        Table table = new Table(UnitValue.createPercentArray(new float[]{3, 2, 1, 2})).useAllAvailableWidth();
+        Table table = new Table(UnitValue.createPercentArray(new float[]{1, 2, 1, 2, 2})).setWidth(UnitValue.createPercentValue(90)).setHorizontalAlignment(HorizontalAlignment.CENTER); // Ajusta el número de columnas
 
         // Encabezados con fondo gris
-        String[] headers = {"Producto", "Código", "Cantidad", "Subtotal"};
+        String[] headers = {"#", "Producto", "Cantidad", "Precio Unitario", "SubTotal"};
         for (String header : headers) {
-            table.addHeaderCell(new Cell().add(new Paragraph(header).setBackgroundColor(new DeviceRgb(220, 220, 220))));
+            table.addHeaderCell(new Cell().add(new Paragraph(header).setBackgroundColor(new DeviceRgb(220, 220, 220)).setPadding(5)));
         }
 
         // **Agregar productos a la tabla**
+        int contador = 1; // Contador para la columna "#"
         double total = 0;
         for (DetallesVentaDTO p : detalle) {
+            Long idProducto = p.getIdProducto();
             String nombre = p.getProducto();
-            int cantidad = p.getStock();
-            double precio = p.getSubTotal();
-            Long codigo = p.getIdProducto();
-            total += precio;
-
+            int cantidad = p.getCantidad();
+            double precio = p.getPrecioUnitario();
+            Double subtotal = p.getSubTotal();
+            total += subtotal; // Sumar el subtotal para el total
+            // Agregar los detalles de cada producto
+            table.addCell(new Cell().add(new Paragraph(String.valueOf(contador++)))); // Columna "#"
             table.addCell(new Cell().add(new Paragraph(nombre)));
-            table.addCell(new Cell().add(new Paragraph(String.valueOf(codigo))));
             table.addCell(new Cell().add(new Paragraph(String.valueOf(cantidad))));
             table.addCell(new Cell().add(new Paragraph(String.format("$%.2f", precio))));
+            table.addCell(new Cell().add(new Paragraph(String.format("$%.2f", subtotal))));
         }
-
+        table.setMargin(30);
         document.add(table);
 
         // **Total alineado a la derecha**
@@ -123,4 +135,5 @@ public class FacturaPDF {
         document.add(totalTable);
         document.close();
     }
+
 }

@@ -3,9 +3,10 @@ package com.brunoferre.gestioninventario.logica;
 public class DetallesVentaDTO {
 
     private Long id;
-    private String producto;
     private Long idProducto;
-    private int stock;
+    private String producto;
+    private int cantidad;
+    private Double precioUnitario;
     private Double subTotal;
 
     public DetallesVentaDTO() {
@@ -15,8 +16,9 @@ public class DetallesVentaDTO {
         this.id = dv.getId();
         this.idProducto = dv.getProducto().getId();
         this.producto = dv.getProducto().getNombre();
-        this.stock = dv.getCantidad();
-        this.subTotal = dv.getPrecio();
+        this.cantidad = dv.getCantidad();
+        this.precioUnitario = dv.getPrecioUnitario();
+        this.subTotal = dv.getPrecioUnitario() * this.cantidad;
     }
 
     public Long getId() {
@@ -27,14 +29,6 @@ public class DetallesVentaDTO {
         this.id = id;
     }
 
-    public String getProducto() {
-        return producto;
-    }
-
-    public void setProducto(String producto) {
-        this.producto = producto;
-    }
-
     public Long getIdProducto() {
         return idProducto;
     }
@@ -43,12 +37,28 @@ public class DetallesVentaDTO {
         this.idProducto = idProducto;
     }
 
-    public int getStock() {
-        return stock;
+    public String getProducto() {
+        return producto;
     }
 
-    public void setStock(int stock) {
-        this.stock = stock;
+    public void setProducto(String producto) {
+        this.producto = producto;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public Double getPrecioUnitario() {
+        return precioUnitario;
+    }
+
+    public void setPrecioUnitario(Double precioUnitario) {
+        this.precioUnitario = precioUnitario;
     }
 
     public Double getSubTotal() {
@@ -58,5 +68,7 @@ public class DetallesVentaDTO {
     public void setSubTotal(Double subTotal) {
         this.subTotal = subTotal;
     }
+
+
 
 }

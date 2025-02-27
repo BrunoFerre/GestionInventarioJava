@@ -15,7 +15,7 @@ public class DetalleVenta implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Double precio;
+    private Double precioUnitario;
     private int cantidad;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_producto")
@@ -27,8 +27,8 @@ public class DetalleVenta implements Serializable {
     public DetalleVenta() {
     }
 
-    public DetalleVenta(Double precio, int cantidad,Producto producto,Venta venta) {
-        this.precio = precio;
+    public DetalleVenta(Double precioUnitario, int cantidad, Producto producto, Venta venta) {
+        this.precioUnitario = precioUnitario;
         this.cantidad = cantidad;
         this.producto = producto;
         this.venta = venta;
@@ -42,12 +42,12 @@ public class DetalleVenta implements Serializable {
         this.id = id;
     }
 
-    public Double getPrecio() {
-        return precio;
+    public Double getPrecioUnitario() {
+        return precioUnitario;
     }
 
-    public void setPrecio(Double precio) {
-        this.precio = precio;
+    public void setPrecioUnitario(Double precioUnitario) {
+        this.precioUnitario = precioUnitario;
     }
 
     public int getCantidad() {

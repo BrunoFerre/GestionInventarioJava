@@ -268,7 +268,7 @@ public class FrmBuscarVenta extends javax.swing.JFrame {
         try {
             FacturaPDF.crearFactura(ventaC, listaDettale);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "ERROR AL CARGAR EL PDF","ERROR",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "ERROR AL CARGAR EL PDF", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnVerFacturaActionPerformed
 
@@ -310,14 +310,14 @@ private void traerVenta() {
                 return false;
             }
         };
-        String titulosTabla[] = {"#", "Id Producto", "Nombre", "Cantidad", "Subtotal"};
+        String titulosTabla[] = {"#", "Id Producto", "Nombre", "Cantidad", "Precio Unitario", "Subtotal"};
         tabla.setColumnIdentifiers(titulosTabla);
 
         //Traer de la db
         listaDettale = control.traerDetalles(ventaC);
         if (listaDettale != null) {
             for (DetallesVentaDTO pr : listaDettale) {
-                Object[] objeto = {pr.getId(), pr.getIdProducto(), pr.getProducto(), pr.getStock(), pr.getSubTotal()};
+                Object[] objeto = {pr.getId(), pr.getIdProducto(), pr.getProducto(), pr.getCantidad(), pr.getPrecioUnitario(), pr.getSubTotal()};
                 tabla.addRow(objeto);
             }
         }
