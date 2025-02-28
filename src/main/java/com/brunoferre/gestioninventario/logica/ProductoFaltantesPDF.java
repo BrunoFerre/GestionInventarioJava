@@ -41,6 +41,8 @@ public class ProductoFaltantesPDF {
 
         // **Si el archivo ya existe, solo se abre**
         if (archivo.exists()) {
+            Desktop.getDesktop().moveToTrash(archivo);
+            generarPdf(destino, lista);
             System.out.println("El archivo ya existe. Abriendo...");
         } else {
             generarPdf(destino, lista);
