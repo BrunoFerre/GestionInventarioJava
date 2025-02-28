@@ -9,7 +9,6 @@ import jakarta.persistence.Table;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "users")
 public class Persona implements Serializable {
 
     @Id

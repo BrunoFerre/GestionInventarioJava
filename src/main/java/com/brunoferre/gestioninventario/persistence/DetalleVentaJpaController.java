@@ -1,6 +1,7 @@
 package com.brunoferre.gestioninventario.persistence;
 
 import com.brunoferre.gestioninventario.logica.DetalleVenta;
+import com.brunoferre.gestioninventario.logica.JPAUtil;
 import java.io.Serializable;
 import jakarta.persistence.Query;
 import jakarta.persistence.EntityNotFoundException;
@@ -18,18 +19,18 @@ import java.util.List;
 
 public class DetalleVentaJpaController implements Serializable {
 
-    public DetalleVentaJpaController(EntityManagerFactory emf) {
-        this.emf = emf;
-    }
-
-    public DetalleVentaJpaController() {
-        emf = Persistence.createEntityManagerFactory("GestionPU");
-    }
+//    public DetalleVentaJpaController(EntityManagerFactory emf) {
+//        this.emf = emf;
+//    }
+//
+//    public DetalleVentaJpaController() {
+//        emf = Persistence.createEntityManagerFactory("PersistencePOST");
+//    }
 
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
-        return emf.createEntityManager();
+        return JPAUtil.getPostgresEntityManager();
     }
 
     public void create(DetalleVenta detalleVenta) {

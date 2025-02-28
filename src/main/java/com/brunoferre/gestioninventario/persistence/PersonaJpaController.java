@@ -1,5 +1,6 @@
 package com.brunoferre.gestioninventario.persistence;
 
+import com.brunoferre.gestioninventario.logica.JPAUtil;
 import com.brunoferre.gestioninventario.logica.Persona;
 import com.brunoferre.gestioninventario.logica.SesionPersona;
 import com.brunoferre.gestioninventario.persistence.exceptions.NonexistentEntityException;
@@ -8,8 +9,6 @@ import jakarta.persistence.EntityManagerFactory;
 import java.io.Serializable;
 import jakarta.persistence.Query;
 import jakarta.persistence.EntityNotFoundException;
-import jakarta.persistence.NoResultException;
-import jakarta.persistence.Persistence;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
@@ -18,17 +17,17 @@ import java.util.Optional;
 
 public class PersonaJpaController implements Serializable {
 
-    public PersonaJpaController(EntityManagerFactory emf) {
-        this.emf = emf;
-    }
-
-    public PersonaJpaController() {
-        emf = Persistence.createEntityManagerFactory("GestionPU");
-    }
+//    public PersonaJpaController(EntityManagerFactory emf) {
+//        this.emf = emf;
+//    }
+//
+//    public PersonaJpaController() {
+//        emf = Persistence.createEntityManagerFactory("PersistenceMYSQL");
+//    }
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
-        return emf.createEntityManager();
+        return JPAUtil.getMysqlEntityManager();
     }
 
     public void create(Persona persona) {

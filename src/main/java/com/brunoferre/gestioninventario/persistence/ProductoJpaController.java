@@ -6,6 +6,7 @@ import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 import com.brunoferre.gestioninventario.logica.DetalleVenta;
+import com.brunoferre.gestioninventario.logica.JPAUtil;
 import com.brunoferre.gestioninventario.logica.Producto;
 import com.brunoferre.gestioninventario.persistence.exceptions.NonexistentEntityException;
 import jakarta.persistence.EntityManager;
@@ -19,19 +20,21 @@ import java.util.Set;
 
 public class ProductoJpaController implements Serializable {
 
-    public ProductoJpaController(EntityManagerFactory emf) {
-        this.emf = emf;
-    }
+//    public ProductoJpaController(EntityManagerFactory emf) {
+//        this.emf = emf;
+//    }
+//
+//    public ProductoJpaController() {
+//        emf = Persistence.createEntityManagerFactory("PersistencePOST");
+//    }
+//
+//    private EntityManagerFactory emf = null;
 
-    public ProductoJpaController() {
-        emf = Persistence.createEntityManagerFactory("GestionPU");
-    }
-
-    private EntityManagerFactory emf = null;
-
+    
     public EntityManager getEntityManager() {
-        return emf.createEntityManager();
+        return JPAUtil.getPostgresEntityManager();
     }
+
 
     public void create(Producto producto) {
         if (producto.getDetalles() == null) {

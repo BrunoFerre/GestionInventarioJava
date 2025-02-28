@@ -1,10 +1,8 @@
     package com.brunoferre.gestioninventario.logica;
 
 import com.brunoferre.gestioninventario.persistence.ControladoraPersistencia;
-import com.brunoferre.gestioninventario.persistence.exceptions.NonexistentEntityException;
 import java.util.List;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
+
 
 public class Controladora {
 

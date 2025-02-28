@@ -2,6 +2,7 @@ com\brunoferre\gestioninventario\persistence\exceptions\PreexistingEntityExcepti
 com\brunoferre\gestioninventario\persistence\PersonaJpaController.class
 com\brunoferre\gestioninventario\vista\FrmOpciones$7.class
 com\brunoferre\gestioninventario\vista\FrmVentas$7.class
+com\brunoferre\gestioninventario\logica\JPAUtil.class
 com\brunoferre\gestioninventario\persistence\exceptions\NonexistentEntityException.class
 com\brunoferre\gestioninventario\vista\Loader.class
 com\brunoferre\gestioninventario\vista\FrmOpciones$13.class
