@@ -6,7 +6,11 @@ package com.brunoferre.gestioninventario.vista;
 
 import com.brunoferre.gestioninventario.logica.Controladora;
 import com.brunoferre.gestioninventario.logica.Producto;
+import com.brunoferre.gestioninventario.logica.ProductoFaltantesPDF;
+import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -23,7 +27,6 @@ public class FrmProductosFaltantes extends javax.swing.JFrame {
         cargarTabla();
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -74,6 +77,11 @@ public class FrmProductosFaltantes extends javax.swing.JFrame {
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buscarPdf.png"))); // NOI18N
         jButton1.setText("GENERAR REPORTE");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(195, 30, 34));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -123,6 +131,16 @@ public class FrmProductosFaltantes extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        ProductoFaltantesPDF pr = new ProductoFaltantesPDF();
+        try {
+            pr.Abrir();
+        } catch (IOException ex) {
+            Logger.getLogger(FrmProductosFaltantes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1,5 +1,6 @@
 package com.brunoferre.gestioninventario.vista;
 
+import com.brunoferre.gestioninventario.logica.Persona;
 import java.awt.Dimension;
 import java.awt.DisplayMode;
 import java.awt.GraphicsConfiguration;
@@ -19,11 +20,14 @@ public class FrmOpciones extends javax.swing.JFrame {
     FrmVentas frmVentas = null;
     FrmProductosFaltantes faltantes = null;
     FrmHistorial historial = null;
-
+    FrmBuscarVenta frmBuscarVenta = null;
+    MiCuenta micuenta = null;
+    private Persona persona;
     Loader loader = new Loader();
 
-    public FrmOpciones() {
+    public FrmOpciones(Persona persona) {
         initComponents();
+        this.persona = persona;
         // Obtener el tamaño de la pantalla y posicionar en la izquierda
         // Obtener la pantalla principal
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -251,13 +255,32 @@ public class FrmOpciones extends javax.swing.JFrame {
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         // TODO add your handling code here:
+        persona = new Persona();
         System.exit(0);
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        MiCuenta cuenta = new MiCuenta();
-        cuenta.setVisible(true);
+        loader.setVisible(true);
+        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+            @Override
+            protected Void doInBackground() throws Exception {
+                // Aquí iría el código para realizar la consulta a la base de datos
+                micuenta = new MiCuenta(persona);
+                // Simulamos la consulta con un retraso de 3 segundos (puedes reemplazar esto con tu consulta real)
+                return null;
+            }
+
+            @Override
+            protected void done() {
+                // Cerrar el loader y abrir la ventana de productos
+                loader.dispose();
+                micuenta.setVisible(true);
+            }
+        };
+
+        // Iniciar el trabajador en segundo plano
+        worker.execute();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnFaltantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFaltantesActionPerformed
@@ -310,8 +333,21 @@ public class FrmOpciones extends javax.swing.JFrame {
 
     private void btnBuscarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarVentaActionPerformed
         // TODO add your handling code here:
-        FrmBuscarVenta frmBuscarVenta = new FrmBuscarVenta();
-        frmBuscarVenta.setVisible(true);
+        loader.setVisible(true);
+        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+            @Override
+            protected Void doInBackground() throws Exception {
+                frmBuscarVenta = new FrmBuscarVenta();
+                return null;
+            }
+
+            @Override
+            protected void done() {
+                loader.dispose();
+                frmBuscarVenta.setVisible(true);
+            }
+        };
+        worker.execute();
     }//GEN-LAST:event_btnBuscarVentaActionPerformed
 
 

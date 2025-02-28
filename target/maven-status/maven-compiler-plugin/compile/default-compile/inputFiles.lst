@@ -6,6 +6,8 @@ C:\Users\Bruno\Documents\GitHub\GestionInventarioJava\src\main\java\com\brunofer
 C:\Users\Bruno\Documents\GitHub\GestionInventarioJava\src\main\java\com\brunoferre\gestioninventario\logica\GenerateNumber.java
 C:\Users\Bruno\Documents\GitHub\GestionInventarioJava\src\main\java\com\brunoferre\gestioninventario\logica\Persona.java
 C:\Users\Bruno\Documents\GitHub\GestionInventarioJava\src\main\java\com\brunoferre\gestioninventario\logica\Producto.java
+C:\Users\Bruno\Documents\GitHub\GestionInventarioJava\src\main\java\com\brunoferre\gestioninventario\logica\ProductoFaltantesPDF.java
+C:\Users\Bruno\Documents\GitHub\GestionInventarioJava\src\main\java\com\brunoferre\gestioninventario\logica\SesionPersona.java
 C:\Users\Bruno\Documents\GitHub\GestionInventarioJava\src\main\java\com\brunoferre\gestioninventario\logica\Venta.java
 C:\Users\Bruno\Documents\GitHub\GestionInventarioJava\src\main\java\com\brunoferre\gestioninventario\logica\VentasDTO.java
 C:\Users\Bruno\Documents\GitHub\GestionInventarioJava\src\main\java\com\brunoferre\gestioninventario\persistence\ControladoraPersistencia.java

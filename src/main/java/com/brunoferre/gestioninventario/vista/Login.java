@@ -5,6 +5,7 @@
 package com.brunoferre.gestioninventario.vista;
 
 import com.brunoferre.gestioninventario.logica.Controladora;
+import com.brunoferre.gestioninventario.logica.Persona;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -18,6 +19,7 @@ public class Login extends javax.swing.JFrame {
 
     Controladora control = new Controladora();
     Loader loader = new Loader();
+    Persona persona;
 
     public Login() {
         initComponents();
@@ -193,9 +195,9 @@ public class Login extends javax.swing.JFrame {
                 // Simulamos una consulta con retardo (puedes reemplazar esto con la consulta real)
                 Thread.sleep(3000);
 
-                if (iniciarSesion()) { // Si el inicio de sesión es exitoso
+                if (iniciarSesion() != null) { // Si el inicio de sesión es exitoso
                     SwingUtilities.invokeLater(() -> {
-                        FrmOpciones frmOpciones = new FrmOpciones();
+                        FrmOpciones frmOpciones = new FrmOpciones(persona);
                         frmOpciones.setVisible(true);
                         dispose(); // Cierra la ventana de login
                     });
@@ -235,12 +237,13 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtDni;
     private javax.swing.JTextField txtEmail;
     // End of variables declaration//GEN-END:variables
-private boolean iniciarSesion() {
+private Persona iniciarSesion() {
         char[] passwordArray = txtDni.getPassword();
         String nombre = txtEmail.getText().toLowerCase();
         String dni = new String(passwordArray);
         System.out.println(dni);
-        return control.iniciarSesion(nombre, dni);
+        persona = control.iniciarSesion(nombre, dni);
+        return persona;
     }
 ;
 }

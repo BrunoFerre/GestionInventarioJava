@@ -41,6 +41,7 @@ public class Loader extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
 
+        pn1.setBackground(new java.awt.Color(58, 67, 64));
         pn1.setFont(new java.awt.Font("Ubuntu Sans Mono", 1, 44)); // NOI18N
         pn1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/spinner.gif"))); // NOI18N

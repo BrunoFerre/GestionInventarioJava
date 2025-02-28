@@ -84,18 +84,18 @@ public class Controladora {
         return controlPersis.traerVentas();
     }
 
-    public boolean iniciarSesion(String email, String dni) {
+    public Persona iniciarSesion(String email, String dni) {
         System.out.println("Iniciando sesión con Email: " + email + ", DNI: " + dni);
 
         Persona persona = controlPersis.findByEmailAndDdni(email, dni);
 
         if (persona != null) {
             System.out.println("Usuario encontrado: " + persona.getEmail());
-            return persona.getDni().equals(dni); // ⚠️ Verifica si la contraseña está encriptada
+            return persona; // ⚠️ Verifica si la contraseña está encriptada
         }
 
         System.out.println("Usuario NO encontrado");
-        return false;
+        return null;
     }
 
     public VentasDTO traerVentaporTicket(String ticket) {

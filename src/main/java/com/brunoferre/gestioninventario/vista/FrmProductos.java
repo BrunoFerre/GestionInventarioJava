@@ -216,20 +216,26 @@ public class FrmProductos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        limpiarTabla();
-        try {
-            guardarProducto();
-            JOptionPane.showMessageDialog(null, "Producto Creado");
-            cargarTabla();
-            limpiarCampos();
-            manejoDecampos(true);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Ingrese una cantidad válida.", "Error", JOptionPane.ERROR_MESSAGE);
-            System.out.println(e.getMessage());
-            limpiarCampos();
-            manejoDecampos(true);
-            cargarTabla();
+        int opcion = JOptionPane.showConfirmDialog(null, "¿Guardar Nuevo Producto?", "Confiramar", JOptionPane.YES_NO_OPTION);
+        if (opcion == JOptionPane.YES_OPTION) {
+            limpiarTabla();
+            try {
+                guardarProducto();
+                JOptionPane.showMessageDialog(null, "Producto Creado");
+                cargarTabla();
+                limpiarCampos();
+                manejoDecampos(true);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Ingrese una cantidad válida.", "Error", JOptionPane.ERROR_MESSAGE);
+                System.out.println(e.getMessage());
+                limpiarCampos();
+                manejoDecampos(true);
+                cargarTabla();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Producto no creado.");
         }
+
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnBuscarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPActionPerformed
@@ -241,12 +247,19 @@ public class FrmProductos extends javax.swing.JFrame {
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
         // TODO add your handling code here:
+
         if (tblDetalle.getRowCount() > 0) {
             if (tblDetalle.getSelectedRow() != -1) {
                 Long idselecionado = Long.parseLong(String.valueOf(tblDetalle.getValueAt(tblDetalle.getSelectedRow(), 0)));
-                control.eliminarProducto(idselecionado);
-                limpiarTabla();
-                cargarTabla();
+                int opcion = JOptionPane.showConfirmDialog(null, "Desea Eliminar el producto?", "Eliminar", JOptionPane.YES_NO_OPTION);
+                if (opcion == JOptionPane.YES_OPTION) {
+                    control.eliminarProducto(idselecionado);
+                    limpiarTabla();
+                    cargarTabla();
+                } else {
+                    JOptionPane.showMessageDialog(null, "El producto no fue Eliminado");
+                }
+
             }
         }
     }//GEN-LAST:event_btnBorrarActionPerformed
@@ -329,7 +342,7 @@ public class FrmProductos extends javax.swing.JFrame {
         Double precio = Double.parseDouble(txtPrecio.getText());
         String codigo = txtCodigo.getText();
         if (nombre.isBlank() || precio.isNaN() || precio.isNaN()) {
-            JOptionPane.showMessageDialog(null, "Error al guardar el producto","ERROR",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error al guardar el producto", "ERROR", JOptionPane.ERROR_MESSAGE);
         } else {
             control.guardarProducto(nombre, stock, precio, codigo);
         }

@@ -21,17 +21,19 @@ public class Persona implements Serializable {
     private String telefono;
     @Column(unique = true)
     private String email;
+    private Boolean estado;
 
     public Persona() {
     }
 
-    public Persona(Long id, String nombre, String apellido, String dni, String telefono, String email) {
+    public Persona(Long id, String nombre, String apellido, String dni, String telefono, String email, Boolean estado) {
         this.id = id;
         this.nombre = nombre.toLowerCase();
         this.apellido = apellido.toLowerCase();
         this.dni = dni.toLowerCase();
         this.telefono = telefono.toLowerCase();
         this.email = email.toLowerCase();
+        this.estado = estado;
     }
 
     public Long getId() {
@@ -80,6 +82,14 @@ public class Persona implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
     }
 
 }

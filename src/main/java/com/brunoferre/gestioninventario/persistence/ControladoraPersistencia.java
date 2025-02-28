@@ -58,7 +58,7 @@ public class ControladoraPersistencia {
     }
     
     public List<Producto> productosFaltantes() {
-        return productoJpa.findProductsForStock(20);
+        return productoJpa.findProductsForStock(10);
     }
     
     public void guardarDetalleVenta(DetalleVenta detalleVenta) {

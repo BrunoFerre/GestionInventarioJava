@@ -1,6 +1,7 @@
 package com.brunoferre.gestioninventario.persistence;
 
 import com.brunoferre.gestioninventario.logica.Persona;
+import com.brunoferre.gestioninventario.logica.SesionPersona;
 import com.brunoferre.gestioninventario.persistence.exceptions.NonexistentEntityException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -148,6 +149,7 @@ public class PersonaJpaController implements Serializable {
             }
 
             System.out.println("Persona encontrada: " + resultados.get(0).getEmail());
+            SesionPersona.setPersona(resultados.get(0));
             return Optional.of(resultados.get(0));
 
         } catch (Exception e) {
