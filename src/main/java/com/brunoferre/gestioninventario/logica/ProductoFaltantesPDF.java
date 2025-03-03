@@ -1,6 +1,5 @@
 package com.brunoferre.gestioninventario.logica;
 
-import static com.brunoferre.gestioninventario.logica.FacturaPDF.crearFactura;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.colors.DeviceRgb;

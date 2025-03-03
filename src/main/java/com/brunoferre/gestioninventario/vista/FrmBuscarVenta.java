@@ -8,6 +8,8 @@ import com.brunoferre.gestioninventario.logica.VentasDTO;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.logging.Level;
@@ -266,7 +268,10 @@ public class FrmBuscarVenta extends javax.swing.JFrame {
 
     private void btnVerFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerFacturaActionPerformed
         try {
-            FacturaPDF.crearFactura(ventaC, listaDettale);
+            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/gestion", "develop", "develop123");
+            FacturaPDF pdf = new FacturaPDF();
+            pdf.imprimir(ventaC.getId());
+            // FacturaPDF.crearFactura(ventaC, listaDettale);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "ERROR AL CARGAR EL PDF", "ERROR", JOptionPane.ERROR_MESSAGE);
         }

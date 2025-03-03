@@ -27,7 +27,6 @@ public class Login extends javax.swing.JFrame {
         this.setBackground(fondo);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-
     }
 
     /**
