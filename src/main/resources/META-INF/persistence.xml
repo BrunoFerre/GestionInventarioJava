@@ -10,6 +10,7 @@
       <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
       <property name="jakarta.persistence.jdbc.password" value="develop123"/>
       <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+      <property name="jakarta.persistence.schema-generation.database.action" value="update"/>
     </properties>
   </persistence-unit>
   <persistence-unit name="PersistencePOST" transaction-type="RESOURCE_LOCAL">
@@ -25,6 +26,7 @@
       <property name="jakarta.persistence.jdbc.password" value="develop123"/>
       <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
       <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+      <property name="jakarta.persistence.schema-generation.database.action" value="update"/>
     </properties>
   </persistence-unit>
 </persistence>
